@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    header {
+      padding-left: calc(50% - 300px);
+      background-color: #333333;
+      color: #fff;
+    }
+    main {
+      width: 600px;
+      margin: auto;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul:nth-of-type(1) li {
+      box-sizing: border-box;
+      width: 180px;
+      height: 40px;
+      border-style: solid;
+      background-color: #ffc0cb;
+      margin: 15px 0;
+    }
+    ul:nth-of-type(1) li:hover {
+      background-color: red;
+    }
+    ul:nth-of-type(1) li:nth-child(n + 5) {
+      margin-left: 210px;
+    }
+    ul:nth-of-type(1) li:nth-child(n + 9) {
+      margin-left: 420px;
+    }
+    ul:nth-of-type(1) li:nth-child(4n + 5) {
+      margin-top: -220px;
+    }
+    ul:nth-of-type(2) {
+      overflow: hidden;
+    }
+    ul:nth-of-type(2) li {
+      border-bottom: 1px dotted #000;
+      margin-bottom: -1px;
+    }
+    footer {
+      background-color: #ee82ee;
+      margin-top: 20px;
+    }
+    footer p {
+      text-align: center;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    hello world 请调整浏览器窗口大小查看效果
+  </header>
+  <main>
+    <p>
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+    </p>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+    </ul>
+  </main>
+  <footer>
+    <p>©版权所有</p>
+    <p>本页所有布局均使用块元素</p>
+  </footer>
+</body>
+</html>
