@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 992px;
+      height: 460px;
+      position: relative;
+    }
+    input {
+      width: 30px;
+      height: 30px;
+      margin-left: 20px;
+      margin-top: 410px;
+      opacity: 0.5;
+    }
+    input ~ input {
+      margin-left: 10px;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 992px;
+      height: 460px;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0;
+      transition: 1s;
+    }
+    input:checked + img {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div>
+  	<input type="radio" name="a" id="" checked>
+  	<img src="https://i1.mifile.cn/a4/xmad_1542718183295_gZCXT.jpg" alt="">
+  	<input type="radio" name="a" id="">
+  	<img src="https://i1.mifile.cn/a4/xmad_15427030629034_vRria.jpg" alt="">
+  	<input type="radio" name="a" id="">
+  	<img src="https://i1.mifile.cn/a4/xmad_1542593050318_TVIrS.jpg" alt="">
+		<input type="radio" name="a" id="">
+		<img src="https://i1.mifile.cn/a4/xmad_15427624932575_mcJkj.jpg" alt="">
+		<input type="radio" name="a" id="">
+		<img src="https://i1.mifile.cn/a4/xmad_15427183282728_fjeaN.jpg" alt="">
+  </div>
+</body>
+</html>
