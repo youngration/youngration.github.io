@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    label {
+      width: 400px;
+      height: 200px;
+      display: block;
+      position: relative;
+      border-radius: 100px;
+      background-color: #ccc;
+    }
+    div:first-child {
+      width: 180px;
+      height: 180px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 10px;
+      margin-top: auto;
+      margin-bottom: auto;
+      border-radius: 90px;
+      background-color: #fff;
+      box-shadow: 0 5px 15px #999;
+      transition: 600ms cubic-bezier(.46,0,.15,1.62);
+      z-index: 2;
+    }
+    div:last-child {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 10px;
+      bottom: 10px;
+      border-radius: 90px;
+      background-color: #eee;
+      z-index: 1;
+      transition: 500ms cubic-bezier(.55,.45,.51,.93);
+    }
+    input:checked + label {
+      background-color: #90ee90;
+    }
+    input:checked + label div:first-child {
+      left: 210px;
+    }
+    input:checked + label div:last-child {
+      left: 250px;
+      right: 150px;
+      top: 100px;
+      bottom: 100px;
+      transition: none;
+    }
+  </style>
+</head>
+<body>
+  <input type="checkbox" name="" id="a" hidden>
+  <label for="a">
+    <div></div>
+		<div></div>
+  </label>
+</body>
+</html>
