@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      padding: 0;
+      list-style-type: none;
+      display: inline-block;
+    }
+    li {
+      width: 120px;
+      height: 40px;
+      line-height: 40px;
+      position: relative;
+      cursor: pointer;
+    }
+    .menu > li {
+      text-align: center;
+      border-left: 2px solid lightgreen;
+      border-right: 2px solid lightgreen;
+      box-sizing: border-box;
+    }
+    .menu > li:nth-of-type(2) {
+      margin-left: 118px;
+      margin-top: -40px;
+    }
+    .menu > li:nth-of-type(3) {
+      margin-left: 236px;
+      margin-top: -40px;
+    }
+    .menu > li:nth-of-type(4) {
+      margin-left: 354px;
+      margin-top: -40px;
+    }
+    .menu > li:nth-of-type(5) {
+      margin-left: 472px;
+      margin-top: -40px;
+    }
+    .menu li:hover {
+      background-color: lightgreen;
+      background-origin: content-box;
+      background-repeat: no-repeat;
+    }
+    li ul {
+      position: absolute;
+      top: 0;
+      left: 100%;
+    }
+    .menu > li > ul {
+      top: 100%;
+      left: -2px;
+    }
+    li ul {
+      height: 0;
+    }
+    .menu > li ul ul::before {
+      content: "➡️";
+      position: absolute;
+      left: -20px;
+    }
+    .menu > li ul li {
+      opacity: 0;
+      visibility: hidden;
+      transition: margin 325ms ease-out;
+      border-bottom: 2px solid lightgreen;
+    }
+    .menu >li > ul > li ul li {
+      margin-left: -15px;
+      border-top: 2px solid lightgreen;
+      margin-top: -2px;
+    }
+    .menu > li > ul > li {
+      margin-top: -10px;
+    }
+    li:hover > ul {
+      height: auto;
+    }
+    li:hover > ul > li:nth-of-type(2) {
+      transition-delay: 50ms;
+    }
+    li:hover > ul > li:nth-of-type(3) {
+      transition-delay: 100ms;
+    }
+    li:hover > ul > li:nth-of-type(4) {
+      transition-delay: 150ms;
+    }
+    li:hover > ul > li:nth-of-type(5) {
+      transition-delay: 200ms;
+    }
+    .menu > li > ul li:hover > ul > li {
+      margin-left: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+    .menu > li:hover > ul > li {
+      margin-top: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+	<ul class="menu">
+		<li>
+			Lorem.
+			<ul>
+				<li>Lorem.</li>
+				<li>
+					Quis!
+					<ul>
+						<li>Lorem.</li>
+						<li>Harum.</li>
+						<li>
+							Nobis!
+							<ul>
+								<li>Lorem.</li>
+								<li>Esse!</li>
+								<li>Corporis.</li>
+								<li>Veritatis.</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>Distinctio.</li>
+			</ul>
+		</li>
+		<li>
+			Laudantium!
+			<ul>
+				<li>Lorem.</li>
+				<li>Quis!</li>
+				<li>Distinctio.</li>
+			</ul>
+		</li>
+		<li>
+			Enim.
+			<ul>
+				<li>Lorem.</li>
+				<li>Ratione!</li>
+				<li>
+					Quae.
+					<ul>
+						<li>Lorem.</li>
+						<li>Vero.</li>
+					</ul>
+				</li>
+				<li>Esse.</li>
+			</ul>
+		</li>
+		<li>
+			Nostrum.
+			<ul>
+				<li>Lorem.</li>
+				<li>Illum.</li>
+				<li>Et.</li>
+				<li>Ex!</li>
+			</ul>
+		</li>
+		<li>
+			Molestias?
+			<ul>
+				<li>Lorem.</li>
+				<li>Repudiandae.</li>
+				<li>Fugit.</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>
