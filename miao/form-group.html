@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      display: table;
+      border: 2px solid #999;
+      border-radius: 20px;
+      overflow: hidden;
+      
+    }
+    div > * {
+      display: table-cell;
+      font-family: monospace;
+      padding: 8px 12px;
+      line-height: 40px;
+      font-size: 18px;
+    }
+    span {
+      width: 1%;
+      background-color: #ddd;
+    }
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      border: 2px #999 solid;
+      border-top: none;
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+	<div>
+		<span>￥</span>
+		<input type="text">
+		<span>.00</span>
+	</div>
+</body>
+</html>
