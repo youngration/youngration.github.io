@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    .ff::after {
+      font-family: FontAwesome;
+      display: inline-block;
+      text-align: center;
+    }
+    /* ********************************* */
+    .ff.ff-2x {
+      font-size: 1.33em;
+    }
+    .ff.ff-3x {
+      font-size: 1.66em;
+    }
+    .ff.ff-4x {
+      font-size: 1.99em;
+    }
+    .ff.ff-5x {
+      font-size: 2.32em;
+    }
+    /* ******************************** */
+    .ff.ff-fw::after {
+      width: 2.5em;
+    }
+    /* ******************************** */
+    ul.ff-ul {
+      padding:0;
+      list-style-type: none;
+    }
+    ul.ff-ul li {
+      margin-left: 30px;;
+    }
+    ul.ff-ul .ff::after, ul.ff-ul .ff.ff-fw::after{
+      width: 30px;
+      margin-left: -30px;
+      text-align: center;
+    }
+    /* ******************************** */
+    .ff.ff-border {
+      padding: 5px;
+      border-style: solid;
+      border-width: 1px;
+    }
+    .ff.ff-border::after {
+      line-height: 1.9;
+    }
+    /* ******************************** */
+    .ff.ff-left {
+      margin: 4px;
+      float: left;
+    }
+    .ff.ff-right {
+      margin: 4px;
+      float: right;
+    }
+    .ff.ff-left::after, .ff.ff-right::after {
+      line-height: normal;
+    }
+    /* ******************************** */
+    .ff.ff-fighter::after {
+      content: "\f0fb";
+    }
+  </style>
+</head>
+<body>
+	<span class="ff ff-fighter"></span>
+	<span class="ff ff-fighter ff-2x"></span>
+	<span class="ff ff-fighter ff-3x"></span>
+	<span class="ff ff-fighter ff-4x"></span>
+	<span class="ff ff-fighter ff-5x"></span>
+	<span class="ff ff-fighter ff-4x"></span>
+	<span class="ff ff-fighter ff-3x"></span>
+	<span class="ff ff-fighter ff-2x"></span>
+	<span class="ff ff-fighter"></span>
+	<hr>
+	<span class="ff ff-fighter ff-fw"></span>
+	<span class="ff ff-fighter ff-2x ff-fw"></span>
+	<span class="ff ff-fighter ff-3x ff-fw"></span>
+	<span class="ff ff-fighter ff-4x ff-fw"></span>
+	<span class="ff ff-fighter ff-5x ff-fw"></span>
+	<span class="ff ff-fighter ff-4x ff-fw"></span>
+	<span class="ff ff-fighter ff-3x ff-fw"></span>
+	<span class="ff ff-fighter ff-2x ff-fw"></span>
+	<span class="ff ff-fighter"></span>
+	<hr>
+	<ul class="ff-ul">
+		<li><span class="ff ff-fighter ff-fw"></span>asd
+			<ul class="ff-ul">
+				<li>
+					<span class="ff ff-fighter"></span>
+					aaa1
+				</li>
+				<li>
+					<span class="ff ff-fighter"></span>
+					aaa2
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<hr>
+	<p>
+		<span class="ff ff-fighter ff-border ff-left"></span>
+		<span class="ff ff-fighter ff-4x ff-right"></span>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et debitis dolorum consequuntur aliquam, doloremque repellat. Ab maxime cum sunt deleniti aperiam! Tempora sed ut non rerum velit molestiae, veritatis magni. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae provident recusandae autem quam quis numquam. Dolorum libero rem aliquid facilis perferendis perspiciatis debitis harum quia. Ipsa animi at ab perspiciatis! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis fugiat nihil voluptatibus aut sint officia? Adipisci, perferendis placeat atque quaerat cum ducimus. Numquam placeat cumque aut nisi, maxime saepe fuga.
+	</p>
+</body>
+</html>
