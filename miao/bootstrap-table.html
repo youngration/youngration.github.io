@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    table.table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 18px;
+      line-height: 1.3;
+      text-align: left;
+      position: relative;
+    }
+    table.table tr {
+      border-color: #dddddd;
+      border-top-style: solid;
+      border-top-width: 1px;
+      height: 50px;
+    }
+    table.table thead tr {
+      border-bottom-style: solid;
+      border-bottom-width: 3px;
+    }
+    table.table th, table.table td {
+      padding: 0 20px;
+    }
+    /* *************************************************** */
+    table.table.table-dark {
+      background-color: #212529;
+      color: #ffffff;
+    }
+    table.table.table-dark tr {
+      border-color: #32383e;
+    }
+    /* **************************************************** */
+    table.table thead.thead-light {
+      background-color: #e9ecef;
+    }
+    /* ---------------------------------------------------- */
+    table.table thead.thead-dark {
+      background-color: #212529;
+      color: #ffffff;
+    }
+    /* **************************************************** */
+    table.table.table-striped tbody tr:nth-child(odd){
+      background-color: rgba(0,0,0,.05);
+    }
+    /* ---------------------------------------------------- */
+    table.table.table-striped.table-dark tbody tr:nth-child(odd){
+      background-color: rgba(255,255,255,.05);
+    }
+    /* **************************************************** */
+    table.table.table-bordered th, table.table.table-bordered td {
+      border-color: #dddddd;
+      border-style: solid;
+      border-width: 1px;
+    }
+    /* ---------------------------------------------------- */
+    table.table.table-bordered.table-dark th, table.table.table-bordered.table-dark td {
+      border-color: #32383e;
+    }
+    /* **************************************************** */
+    table.table.table-borderless.table-borderless tr{
+      border: none;
+    }
+    /* **************************************************** */
+    table.table.table-hover tbody tr:hover {
+      background-color: rgba(0,0,0,.075);
+    }
+    /* ---------------------------------------------------- */
+    table.table.table-hover.table-dark tbody tr:hover {
+      background-color: rgba(255,255,255,.075);
+    }
+    /* ***************************************************** */
+    table.table.table-sm tr {
+      height: 30px;
+    }
+    /* ***************************************************** */
+    table.table tbody tr.table-active, table.table tbody th.table-active, table.table tbody td.table-active {
+      background-color: rgba(0,0,0,.075);
+    }
+    table.table.table-hover tbody tr.table-active:hover, table.table.table-hover tbody th.table-active:hover, table.table.table-hover tbody td.table-active:hover {
+      background-color: rgba(0,0,0,.075);
+    }
+    table.table tbody tr.table-primary, table.table tbody th.table-primary, table.table tbody td.table-primary {
+      background-color: #b8daff;
+    }
+    table.table.table-hover tbody tr.table-primary:hover, table.table.table-hover tbody th.table-primary:hover, table.table.table-hover tbody td.table-primary:hover {
+      background-color: #9fcdff;
+    }
+    table.table tbody tr.table-secondary, table.table tbody th.table-secondary, table.table tbody td.table-secondary {
+      background-color: #d6d8db;
+    }
+    table.table.table-hover tbody tr.table-secondary:hover, table.table.table-hover tbody th.table-secondary:hover, table.table.table-hover tbody td.table-secondary:hover {
+      background-color: #c8cbcf;
+    }
+    table.table tbody tr.table-success, table.table tbody th.table-success, table.table tbody td.table-success {
+      background-color: #c3e6cb;
+    }
+    table.table.table-hover tbody tr.table-success:hover, table.table.table-hover tbody th.table-success:hover, table.table.table-hover tbody td.table-success:hover {
+      background-color: #b1dfbb;
+    }
+    table.table tbody tr.table-danger, table.table tbody th.table-danger, table.table tbody td.table-danger {
+      background-color: #f5c6cb;
+    }
+    table.table.table-hover tbody tr.table-danger:hover, table.table.table-hover tbody th.table-danger:hover, table.table.table-hover tbody td.table-danger:hover {
+      background-color: #f1b0b7;
+    }
+    table.table tbody tr.table-warning, table.table tbody th.table-warning, table.table tbody td.table-warning {
+      background-color: #ffeeba;
+    }
+    table.table.table-hover tbody tr.table-warning:hover, table.table.table-hover tbody th.table-warning:hover, table.table.table-hover tbody td.table-warning:hover {
+      background-color: #ffe8a1;
+    }
+    table.table tbody tr.table-info, table.table tbody th.table-info, table.table tbody td.table-info {
+      background-color: #bee5eb;
+    }
+    table.table.table-hover tbody tr.table-info:hover, table.table.table-hover tbody th.table-info:hover, table.table.table-hover tbody td.table-info:hover {
+      background-color: #abdde5;
+    }
+    table.table tbody tr.table-light, table.table tbody th.table-light, table.table tbody td.table-light {
+      background-color: #fdfdfe;
+    }
+    table.table.table-hover tbody tr.table-light:hover, table.table.table-hover tbody th.table-light:hover, table.table.table-hover tbody td.table-light:hover {
+      background-color: #ececf6;
+    }
+    table.table tbody tr.table-dark, table.table tbody th.table-dark, table.table tbody td.table-dark {
+      background-color: #212529;
+    }
+    table.table.table-hover tbody tr.table-dark:hover, table.table.table-hover tbody th.table-dark:hover, table.table.table-hover tbody td.table-dark:hover {
+      background-color: #b9bbbe;
+    }
+    /* --------------------------------------------------- */
+    table.table.table-dark tbody tr.bg-primary, table.table.table-dark tbody th.bg-primary, table.table.table-dark tbody td.bg-primary {
+      background-color: #007bff!important;
+    }
+    table.table.table-dark tbody tr.bg-success, table.table.table-dark tbody th.bg-success, table.table.table-dark tbody td.bg-success {
+      background-color: #28a745!important;
+    }
+    table.table.table-dark tbody tr.bg-warning, table.table.table-dark tbody th.bg-warning, table.table.table-dark tbody td.bg-warning {
+      background-color: #ffc107!important;
+    }
+    table.table.table-dark tbody tr.bg-danger, table.table.table-dark tbody th.bg-danger, table.table.table-dark tbody td.bg-danger {
+      background-color: #dc3545!important;
+    }
+    table.table.table-dark tbody tr.bg-info, table.table.table-dark tbody th.bg-info, table.table.table-dark tbody td.bg-info {
+      background-color: #17a2b8!important;
+    }
+    /* ****************************************************** */
+    table.table caption {
+      color: #000000;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      text-align-last: left;
+      padding: 10px 0;
+    }
+    /* ************************************************** */
+    div {
+      display: flow-root;
+    }
+    fieldset {
+      float: left;
+    }
+    hr {
+      border-style: dashed;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <fieldset>
+      <legend>主题</legend>
+      <label>
+        <input type="radio" checked name="theme">
+        default
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="theme" value="table-dark">
+        dark
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>表头</legend>
+      <label>
+        <input type="radio" checked name="thead">
+        default
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="thead" value="thead-light">
+        light
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="thead" value="thead-dark">
+        dark
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>条纹</legend>
+      <label>
+        <input type="radio" checked name="striped">
+        default
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="striped" value="table-striped">
+        yes
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>边框</legend>
+      <label>
+        <input type="radio" checked name="border">
+        default
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="border" value="table-bordered">
+        yes
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="border" value="table-borderless">
+        no
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Hover</legend>
+      <label>
+        <input type="radio" checked name="hover">
+        default
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="hover" value="table-hover">
+        yes
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>sm</legend>
+      <label>
+        <input type="radio" checked name="sm">
+        default
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="sm" value="table-sm">
+        yes
+      </label>
+    </fieldset>
+  </div>
+  <hr>
+  <table id="table">
+    <thead id="thead">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+        <th>颜色</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>
+          <select>
+            <optgroup label="light">
+              <option value="table-default">default</option>
+              <option value="table-active">active</option>
+              <option value="table-primary">primary</option>
+              <option value="table-secondary">secondary</option>
+              <option value="table-success">success</option>
+              <option value="table-danger">danger</option>
+              <option value="table-warning">warning</option>
+              <option value="table-info">info</option>
+              <option value="table-light">light</option>
+              <option value="table-dark">dark</option>
+            </optgroup>
+            <optgroup label="dark">
+              <option value="bg-primary">primary</option>
+              <option value="bg-success">success</option>
+              <option value="bg-danger">danger</option>
+              <option value="bg-warning">warning</option>
+              <option value="bg-info">info</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>
+          <select>
+            <optgroup label="light">
+              <option value="table-default">default</option>
+              <option value="table-active">active</option>
+              <option value="table-primary">primary</option>
+              <option value="table-secondary">secondary</option>
+              <option value="table-success">success</option>
+              <option value="table-danger">danger</option>
+              <option value="table-warning">warning</option>
+              <option value="table-info">info</option>
+              <option value="table-light">light</option>
+              <option value="table-dark">dark</option>
+            </optgroup>
+            <optgroup label="dark">
+              <option value="bg-primary">primary</option>
+              <option value="bg-success">success</option>
+              <option value="bg-danger">danger</option>
+              <option value="bg-warning">warning</option>
+              <option value="bg-info">info</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+        <td>
+          <select>
+            <optgroup label="light">
+              <option value="table-default">default</option>
+              <option value="table-active">active</option>
+              <option value="table-primary">primary</option>
+              <option value="table-secondary">secondary</option>
+              <option value="table-success">success</option>
+              <option value="table-danger">danger</option>
+              <option value="table-warning">warning</option>
+              <option value="table-info">info</option>
+              <option value="table-light">light</option>
+              <option value="table-dark">dark</option>
+            </optgroup>
+            <optgroup label="dark">
+              <option value="bg-primary">primary</option>
+              <option value="bg-success">success</option>
+              <option value="bg-danger">danger</option>
+              <option value="bg-warning">warning</option>
+              <option value="bg-info">info</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    var t = document.getElementById('table');
+    var th = document.getElementById('thead');
+    var tb = document.getElementById('tbody');
+    var tr = tb.getElementsByTagName('tr')
+    var it = document.getElementsByTagName('input');
+    var s = document.getElementsByTagName('select');
+    var cl = t.classList;
+    cl.add('table');
+    for(var i = 0; i < it.length; i++) {
+      it[i].onchange = function(){
+        t.removeAttribute('class');
+        th.removeAttribute('class');
+        for(var j = 0; j < it.length; j++) {
+          if(it[j].checked) {
+            if(it[j].name === 'thead') {
+              th.classList.add(it[j].value);
+            } else {
+              cl.add(it[j].value);
+            }
+          }
+        }
+        cl.remove('on');
+        cl.add('table');
+      }
+    }
+    for(let i = 0; i < s.length; i++) {
+      s[i].onchange = function(){
+        tr[i].removeAttribute('class');
+        tr[i].classList.add(s[i].value);
+      }
+    }
+  </script>
+</body>
+</html>
