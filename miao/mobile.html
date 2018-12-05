@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      position: relative;
+      padding: 50% 0;
+      box-sizing: border-box;
+    }
+    img {
+      width: calc(100% * 240 / 800);
+      position: absolute;
+    }
+    img:nth-child(1) {
+      left: calc(100% * 160 / 800);
+      z-index: 1;
+    }
+    img:nth-child(2) {
+      top: calc(100% * 150 / 800 + 100% / 2);
+      left: calc(100% * 280 / 800);
+      z-index: 2;
+    }
+    img:nth-child(3) {
+      top: calc(100% * 300 / 800 + 100% / 2);
+      left: calc(100% * 400 / 800);
+      z-index: 1;
+    }
+    img:hover {
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://daneden.imgix.net/2018/10/portrait.jpg?auto=format&dpr=2&fm=pjpg&crop=faces&fit=max&w=200&h=300&ixlib=react-7.2.0" alt="">
+  <img src="https://daneden.imgix.net/2018/10/GenArt.png?auto=format&dpr=2&fm=pjpg&crop=faces&fit=max&w=300&h=500&ixlib=react-7.2.0" alt="">
+  <img src="https://daneden.imgix.net/2018/10/home.jpg?auto=format&dpr=3&fm=pjpg&crop=faces&fit=max&w=300&h=400&ixlib=react-7.2.0" alt="">
+</body>
+</html>
