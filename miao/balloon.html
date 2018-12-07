@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      background-color: rgba(0,0,0,0.08);
+    }
+    body {
+      padding-top: 300px;
+    }
+    .b {
+      margin-top: 200px;
+      margin-left: 300px;
+    }
+    [data-qp] {
+      position: relative;
+    }
+    [data-qp][data-qp-p]::before {
+      position: absolute;
+      content: "";
+      background-size: contain;
+      visibility: hidden;
+      opacity: 0;
+      transition: .2s linear;
+    }
+    [data-qp][data-qp-p]:hover::before {
+      visibility: visible;
+      opacity: 1;
+    }
+    [data-qp][data-qp-p][data-qp-v]::before {
+      visibility: visible;
+      opacity: 1;
+    }
+    [data-qp][data-qp-p]::after {
+      content: attr(data-qp);
+      color: #ffffff;
+      background-color: #292516;
+      position: absolute;
+      padding: 8px 12px;
+      font: 14px/1 serif;
+      border-radius: 6px;
+      white-space: nowrap;
+      visibility: hidden;
+      opacity: 0;
+      transition: .2s linear;
+    }
+    [data-qp][data-qp-p]:hover::after {
+      visibility: visible;
+      opacity: 1;
+    }
+    [data-qp][data-qp-p][data-qp-l]::after {
+      white-space: normal;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    [data-qp][data-qp-p][data-qp-v]::after {
+      visibility: visible;
+      opacity: 1;
+    }
+    [data-qp][data-qp-p="top"]::before {
+      left: 50%;
+      bottom: 100%;
+      width: 18px;
+      height: 6px;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22rgba(17, 17, 17, 0.9)%22%20transform%3D%22rotate(0)%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E");
+      transform: translate(-9px, 0);
+    }
+    [data-qp][data-qp-p="top"]:hover::before {
+      transform: translate(-9px, -4px);
+    }
+    [data-qp][data-qp-p="top"][data-qp-v]::before {
+      transform: translate(-9px, -4px);
+    }
+    [data-qp][data-qp-p="top"]::after {
+      left: 50%;
+      bottom: 100%;
+      transform: translate(-50%, -6px);
+    }
+    [data-qp][data-qp-p="top"]:hover::after {
+      transform: translate(-50%, -10px);
+    }
+    [data-qp][data-qp-p="top"][data-qp-v]::after {
+      transform: translate(-50%, -10px);
+    }
+    [data-qp][data-qp-p="bottom"]::before {
+      left: 50%;
+      top: 100%;
+      width: 18px;
+      height: 6px;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22rgba(17, 17, 17, 0.9)%22%20transform%3D%22rotate(180 18 6)%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E");
+      transform: translate(-9px, 0);
+    }
+    [data-qp][data-qp-p="bottom"]:hover::before {
+      transform: translate(-9px, 4px);
+    }
+    [data-qp][data-qp-p="bottom"][data-qp-v]::before {
+      transform: translate(-9px, 4px);
+    }
+    [data-qp][data-qp-p="bottom"]::after {
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, 6px);
+    }
+    [data-qp][data-qp-p="bottom"]:hover::after {
+      transform: translate(-50%, 10px);
+    }
+    [data-qp][data-qp-p="bottom"][data-qp-v]::after {
+      transform: translate(-50%, 10px);
+    }
+    [data-qp][data-qp-p="left"]::before {
+      right: 100%;
+      top: 50%;
+      width: 6px;
+      height: 18px;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2212px%22%20height%3D%2236px%22%3E%3Cpath%20fill%3D%22rgba(17, 17, 17, 0.9)%22%20transform%3D%22rotate(-90 18 18)%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E");
+      transform: translate(0, -9px);
+    }
+    [data-qp][data-qp-p="left"]:hover::before {
+      transform: translate(-4px, -9px);
+    }
+    [data-qp][data-qp-p="left"][data-qp-v]::before {
+      transform: translate(-4px, -9px);
+    }
+    [data-qp][data-qp-p="left"]::after {
+      right: 100%;
+      top: 50%;
+      transform: translate(-6px, -50%);
+    }
+    [data-qp][data-qp-p="left"]:hover::after {
+      transform: translate(-10px, -50%);
+    }
+    [data-qp][data-qp-p="left"][data-qp-v]::after {
+      transform: translate(-10px, -50%);
+    }
+    [data-qp][data-qp-p="right"]::before {
+      left: 100%;
+      top: 50%;
+      width: 6px;
+      height: 18px;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2212px%22%20height%3D%2236px%22%3E%3Cpath%20fill%3D%22rgba(17, 17, 17, 0.9)%22%20transform%3D%22rotate(90 6 6)%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E");
+      transform: translate(0, -9px);
+    }
+    [data-qp][data-qp-p="right"]:hover::before {
+      transform: translate(4px, -9px);
+    }
+    [data-qp][data-qp-p="right"][data-qp-v]::before {
+      transform: translate(4px, -9px);
+    }
+    [data-qp][data-qp-p="right"]::after {
+      left: 100%;
+      top: 50%;
+      transform: translate(6px, -50%);
+    }
+    [data-qp][data-qp-p="right"]:hover::after {
+      transform: translate(10px, -50%);
+    }
+    [data-qp][data-qp-p=""][data-qp-v]::after {
+      transform: translate(-10px, 50%);
+    }
+    [data-qp][data-qp-p][data-qp-l="small"]::after {
+      width: 35%;
+    }
+    [data-qp][data-qp-p][data-qp-l="medium"]::after {
+      width: 75%;
+    }
+    [data-qp][data-qp-p][data-qp-l="fit"]::after {
+      width: 100%;
+    }
+    [data-qp][data-qp-p][data-qp-l="large"]::after {
+      width: 125%;
+    }
+    [data-qp][data-qp-p][data-qp-l="xlarge"]::after {
+      width: 150%;
+    }
+  </style>
+</head>
+<body>
+  <div class="b" data-qp="asdasdads asdasd" data-qp-p="top" data-qp-v>asdasdasd asdasd</div>
+</body>
+</html>
