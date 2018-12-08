@@ -6,16 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    * {
-      background-color: rgba(0,0,0,0.08);
-    }
-    body {
-      padding-top: 300px;
-    }
-    .b {
-      margin-top: 200px;
-      margin-left: 300px;
-    }
     [data-qp] {
       position: relative;
     }
@@ -158,8 +148,8 @@
     [data-qp][data-qp-p="right"]:hover::after {
       transform: translate(10px, -50%);
     }
-    [data-qp][data-qp-p=""][data-qp-v]::after {
-      transform: translate(-10px, 50%);
+    [data-qp][data-qp-p="right"][data-qp-v]::after {
+      transform: translate(10px, -50%);
     }
     [data-qp][data-qp-p][data-qp-l="small"]::after {
       width: 35%;
@@ -176,9 +166,99 @@
     [data-qp][data-qp-p][data-qp-l="xlarge"]::after {
       width: 150%;
     }
+    /* ××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××× */
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+    }
+    .wrapper {
+      width: 980px;
+      margin: 20px auto;
+      display: flow-root;
+    }
+    fieldset {
+      float: left;
+    }
+    .test {
+      width: 250px;
+      height: 100px;
+      background-color:lightseagreen;
+      margin: 250px auto;
+    }
   </style>
 </head>
 <body>
-  <div class="b" data-qp="asdasdads asdasd" data-qp-p="top" data-qp-v>asdasdasd asdasd</div>
+  <div class="wrapper">
+    <fieldset style="width: 554px">
+      <legend>内容</legend>
+      <textarea name="" id="ta" cols="30" rows="10" style="width:548px">Hello World!</textarea>
+    </fieldset>
+    <fieldset>
+      <legend>位置</legend>
+      <label for="w1"><input checked type="radio" name="w" id="w1" value="top">top</label>
+      <label for="w2"><input type="radio" name="w" id="w2" value="right">right</label>
+      <label for="w3"><input type="radio" name="w" id="w3" value="bottom">bottom</label>
+      <label for="w4"><input type="radio" name="w" id="w4" value="left">left</label>
+    </fieldset>
+    <fieldset>
+      <legend>尺寸</legend>
+      <label for="c1"><input checked type="radio" name="c" id="c1">default</label>
+      <label for="c2"><input type="radio" name="c" id="c2" value="small">35%</label>
+      <label for="c3"><input type="radio" name="c" id="c3" value="medium">75%</label>
+      <label for="c4"><input type="radio" name="c" id="c4" value="fit">100%</label>
+      <label for="c5"><input type="radio" name="c" id="c5" value="large">125%</label>
+      <label for="c6"><input type="radio" name="c" id="c6" value="xlarge">150%</label>
+    </fieldset>
+    <fieldset>
+      <legend>收起</legend>
+      <label for="y1"><input type="checkbox" name="y" id="y1">不收起</label>
+    </fieldset>
+  </div>
+  <hr>
+  <div id="test" class="test">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, repudiandae.</div>
+  <script>
+    var t = document.getElementById('test');
+    var ta = document.getElementById('ta');
+    var w = document.querySelectorAll('input[name=w]');
+    var c = document.querySelectorAll('input[name=c]');
+    var y = document.querySelector('input#y1');
+    var input = document.querySelectorAll('input');
+    var dota = function() {
+      t.setAttribute('data-qp', ta.value);
+      for(let i=0; i< w.length; i++) {
+        if(w[i].checked) {
+          t.setAttribute('data-qp-p', w[i].value);
+          break;
+        }
+      }
+      for(let i=0; i< c.length; i++) {
+        if(c[i].checked) {
+          if(i === 0) {
+            t.removeAttribute('data-qp-l');
+          } else {
+            t.setAttribute('data-qp-l', c[i].value);
+          }
+          break;
+        }
+      }
+      if(y.checked) {
+        t.setAttribute('data-qp-v', '');
+      } else {
+        t.removeAttribute('data-qp-v');
+      }
+    }
+    ta.oninput = function() {
+      dota();
+    };
+    for(let i=0; i<input.length; i++) {
+      input[i].onchange = function() {
+        dota();
+      };
+    }
+    dota();
+  </script>
 </body>
 </html>
