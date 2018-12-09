@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    @keyframes bounce {
+      from {
+        transform: translateY(-30px);
+        animation-timing-function: ease-in;
+      }
+      40% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+      }
+      70% {
+        transform: translateY(-10px);
+        animation-timing-function: ease-in;
+      }
+      90% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+      }
+      95% {
+        transform: translateY(-5px);
+        animation-timing-function: ease-in;
+      }
+    }
+    @keyframes tada {
+      from {
+        animation-timing-function: linear;
+      }
+      30% {
+        transform: scale(.9)rotate(-5deg)
+      }
+      40% {
+        transform: scale(1.1)rotate(5deg)
+      }
+      50% {
+        transform: scale(1.1)rotate(-5deg)
+      }
+      60% {
+        transform: scale(1.1)rotate(5deg)
+      }
+      70% {
+        transform: scale(1.1)rotate(-5deg)
+      }
+      80% {
+        transform: scale(1.1)rotate(5deg)
+      }
+      90% {
+        transform: scale(1.1)rotate(-5deg)
+      }
+    }
+    @keyframes zoomIn {
+      from {
+        transform: scale(0);
+        animation-timing-function: cubic-bezier(.09,.71,.2,.96);
+      }
+      to {
+        transform: scale(1)
+      }
+    }
+    @keyframes hinge {
+      from {
+        animation-timing-function: ease-in-out;
+      }
+      15% {
+        transform: rotate(-130deg);
+        animation-timing-function: ease-in-out;
+      }
+      30% {
+        transform: rotate(-60deg);
+        animation-timing-function: ease-in-out;
+      }
+      45% {
+        transform: rotate(-110deg);
+        animation-timing-function: ease-in-out;
+      }
+      60% {
+        transform: rotate(-70deg);
+        animation-timing-function: ease-in-out;
+      }
+      75% {
+        transform: rotate(-100deg);
+        animation-timing-function: ease-in-out;
+      }
+      90% {
+        transform: rotate(-80deg);
+        opacity: 1;
+        animation-timing-function: ease-in;
+      }
+      to {
+        transform: rotate(-80deg)translateX(-100px);
+        opacity: 0;
+        display: none;
+      }
+    }
+    @keyframes lightSpeedIn {
+      from {
+        transform: translateX(200px)skewX(-30deg);
+      }
+      60% {
+        transform: skewX(20deg);
+      }
+      80% {
+        transform: skewX(-5deg);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+</html>
