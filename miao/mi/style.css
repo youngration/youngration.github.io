@@ -669,71 +669,72 @@ body:hover .clock .hour .min .sec {
 .list {
   background-color: #f5f5f5;
   margin-top: 50px;
+  padding-top: 1px;
 }
 .list > div {
   width: 1226px;
-  margin: auto;
+  margin: 30px auto;
 }
 .list .title {
-  line-height: 80px;
+  line-height: 60px;
   display: flow-root;
 }
-.list .title span {
+.list .title > span {
   float: left;
   font-size: 24px;
 }
-.list .title.title a {
+.list .title.title > a {
   float: right;
   color: #666666;
 }
 .list .title.title a:hover {
   color: #f06a00;
 }
-.list .products {
+.list .phone .products {
   display: flow-root;
   position: relative;
 }
-.list .products div {
+.list .phone .products div {
   float: left;
   position: relative;
   font-size: 0;
   top: 0;
   transition: .5s;
 }
-.list .products .left:hover {
+.list .phone .products .left:hover {
   top: -7px;
   box-shadow: 0 20px 30px -10px #cccccc;
 }
-.list .products .left img{
+.list .phone .products .left img{
   width: 234px;
   height: 614px;
 }
-.list .products .right {
+.list .phone .products .right {
   width: 234px;
   margin-left: 14px;
   margin-bottom: 14px;
   text-align: center;
   background-color: #ffffff;
 }
-.list .products .right:hover {
+.list .phone .products .right:hover {
   top: -7px;
   box-shadow: 0 10px 50px -10px #aaaaaa;
 }
-.list .products .right a {
+.list .phone .products .right a {
   display: inline-block;
   width: 100%;
   color: #333333;
 }
-.list .products .right a img {
+.list .phone .products .right a img {
   width: 160px;
   height: 160px;
   margin: 24px 0 8px;
 }
-.list .products .right a p {
+.list .phone .products .right a p {
   font-size: 14px;
   margin-bottom: 8px;
 }
-.list .products .right > p:first-of-type {
+.list .phone .products .right > p:first-of-type {
   font-size: 13px;
   color: #aaaaaa;
   margin-top: 0;
@@ -741,11 +742,167 @@ body:hover .clock .hour .min .sec {
   height: 14px;
   box-sizing: border-box;
 }
-.list .products .right > p:last-of-type {
+.list .phone .products .right > p:last-of-type {
   font-size: 14px;
   margin-bottom: 26px;
   color: #f06a00;
 }
-.list .products .right > p:last-of-type del {
+.list .phone .products .right > p:last-of-type del {
   color: #aaaaaa;
+}
+.list .jd {
+  position: relative;
+}
+.list .jd .title .ul {
+  float: right;
+  display: flex;
+  width: 250px;
+}
+.list .jd .title .ul > div {
+  padding: 0 15px;
+}
+.list .jd .title .ul > div:first-child {
+  padding-left: 0;
+}
+.list .jd .title .ul > div:last-child {
+  padding-right: 0;
+}
+.list .jd .title .ul > div > a {
+  float: none;
+  padding: 4px 0;
+  color: #666666;
+}
+.list .jd .title .ul > div:first-child > a {
+  color: #f06a00;
+  border-bottom: 2px solid #f06a00;
+}
+.list .jd .title .ul:hover > div > a {
+  color: #666666;
+  border-bottom: none;
+}
+.list .jd .title .ul:hover > div:hover > a {
+  color: #f06a00;
+  border-bottom: 2px solid #f06a00;
+}
+.list .jd .title .tag {
+  position: absolute;
+  z-index: 0;
+  top: 60px;
+  left: 248px;
+  width: calc(100% - 248px);
+  height: 614px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.list .jd .title .ul > div:hover .tag {
+  z-index: 2;
+}
+.list .jd .title .ul > div:first-child .tag {
+  z-index: 1;
+}
+.list .jd .title .ul > div .tag > div {
+  width: 234px;
+  height: 300px;
+  text-align: center;
+  line-height: normal;
+  background-color: #ffffff;
+  position: relative;
+  transition: .5s;
+  top: 0;
+}
+.list .jd .title .ul div .tag > div:nth-last-child(-n + 2) {
+  height: 143px;
+}
+.list .jd .title .ul > div .tag .big a {
+  display: inline-block;
+  width: 100%;
+  height: 220px;
+  font-size: 13px;
+}
+.list .jd .title .ul > div .tag .big a img {
+  width: 150px;
+  margin-top: 30px;
+}
+.list .jd .title .ul > div .tag .big a p {
+  margin-bottom: 0;
+  color: #333333;
+}
+.list .jd .title .ul > div .tag .big div {
+  position: relative;
+  height: 80px;
+}
+.list .jd .title .ul > div .tag .big div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  color: #aaaaaa;
+}
+.list .jd .title .ul > div .tag .big div p {
+  margin: 0;
+  line-height: 80px;
+  font-size: 14px;
+  color: #f06a00;
+}
+.list .jd .title .ul > div .tag .big div p del{
+  color: #aaaaaa;
+}
+.list .jd .title .ul > div .tag .small {
+  display: flex;
+}
+.list .jd .title .ul > div .tag .small div {
+  position: relative;
+  font-size: 14px;
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1 0%;
+  text-align: left;
+}
+.list .jd .title .ul > div .tag .small div span {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+}
+.list .jd .title .ul > div .tag .small div p {
+  color: #f06a00;
+  line-height: 103px;;
+  margin: 0;
+}
+.list .jd .title .ul > div .tag .small a {
+  display: inline-block;
+  width: 100%;
+  line-height: 103px;
+  font-size: 0;
+  color: #f06a00;
+}
+.list .jd .title .ul > div .tag .small a img {
+  width: 80px;
+  vertical-align: middle;
+}
+.list .jd .title .ul > div .tag .small a i {
+  font-size: 48px;
+  line-height: 103px;
+}
+.list .jd .products {
+  width: 234px;
+  height: 614px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.list .jd .products div {
+  height: 300px;
+  position: relative;
+  transition: .5s;
+  top: 0;
+}
+.list .jd .products div img {
+  width: 100%;
+}
+.list .jd .products > div:hover, .list .jd .title .ul > div .tag > div:hover {
+  top: -7px;
+  box-shadow: 0 10px 50px -10px #aaaaaa;
 }

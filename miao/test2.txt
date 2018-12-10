@@ -22,7 +22,7 @@
 * 处于hover状态的div元素的后代ul元素的后代li元素的子div元素
 * body元素的处于active状态的后代元素
 * 处于hover状态的div元素的after伪元素
-* 
+* 被鼠标选中的部分，只能设置前景色和背景色
 * id为url中hash片段的元素
 * input元素的相邻ul元素的相邻p元素的兄弟span元素
 02. 分别写出如下几个选择器的优先级
@@ -44,12 +44,15 @@
     ```
     请问最终引入的c.css的完整路径是什么？
 * https://test.example.com/path/c.css
-04. `em,px,rem,vw,vh` 分别代表多长？
+* 双斜杠相对当前协议，单斜杠相对当前主机，无斜杠相对当前地址
+04. `em,px,rem,vw,vh,vmax,vmin` 分别代表多长？
 * 当前元素的字号
 * css像素
 * 根元素的字号
-* 视口宽度
-* 视口高度
+* 视口宽度的百分之一
+* 视口高度的百分之一
+* vw和vh的较大者
+* vw和vh的较小者
 05. 显示器的物理分辨率为 `1920x1080`，操作系统设置的分辨率为 `1280x720`，网页的放大倍数为 `110%`，请计算一个 CSS 像素对应多少个显示器物理像素（面积与长度）？
 * 4/2, 2.7225/1.65
 06. 写出如下代码显示在浏览器后**每个单词**的字号
@@ -80,22 +83,22 @@
       </section>
     </body>
     ```
-* Brown 200px ?
+* Brown 300px
 * quick 24px
 * jumps 24px
 * over 36px
-* lazy 54px ?
+* lazy 54px
 * dog 36px
 * sucks 200px
-07. 字体的 italic 与 obsolete 的区别是？
-* italic指斜体
-*
+07. 字体的 italic 与 oblique 的区别是？
+* italic指专门设计的斜体样式的字体
+* oblique指倾斜正体得来的斜体字
 08. 写出满足如下条件的选择器
-    * 第  8个子结点之后，倒数第 5 个子结点之前的li结点
+    * 第8个子结点之后，倒数第5个子结点之前的li结点
     * 【类名】以“damiao-”开头的元素
     * rel 属性中有 nofollow 这个单词的标签
-* li:nth-child(n + 8):nth-last-child(-n + 5)
-* [class^="damiao-"]
+* li:nth-child(n + 8):nth-last-child(n + 5)
+* [class^="damiao-"],[class^=" damiao-"]
 * [rel~="nofollow"]
 09. 链接伪类的几种状态书写的顺序是什么？为什么？
 * :link、:visited、:hover、:active
@@ -106,11 +109,12 @@
     * font: bold 24px/1.2 serif;
 * 第三种
 11. vertical-align 取 middle 时元素如何对齐？
-* 元素的基线与父元素的基线向上x半高线对齐
+* 元素的行内框中线与父元素的基线向上x半高线对齐、表单元格的内容在单元格中垂直居中
 12. 什么是 baseline？
-* 字体的小写x字母的下边缘线
+* 对于文本，字体的小写x字母的下边缘线
 13. 详述你对盒模型的理解。
 * 盒模型是布局的重要工具。元素在css中分为块级盒和行内级盒。在常规流，块级盒由上到下依次排列，行内级盒由左到右依次排列。盒从内到外依次为content、padding、border、margin
+* 交互性、宽高计算
 14. 如何让一个元素可被 focus？如何去掉其被 focus 时的虚框？
 * 设置tabindex属性
 * css属性outline设置为none
@@ -132,7 +136,7 @@
 * font: 25px serif
 17. 元素的高度写百分比在什么情况下【无效】，为什么？在什么情况下【有效】，有效时是以哪个元素的高度为基准值？
 * 在父元素的高度为auto时无效，因为此时父元素高度依赖子元素的高度，从而形成死循环
-* 在父元素高度不为auto时，以父元素的高度为基准值
+* 在父元素高度不为auto时，以父元素的高度为基准值；子元素定位时
 18. 解释 box-sizing 可以取哪些值，以及每个值的意义
 * border-box：此时元素宽高指的是border-box的宽高
 * content-box：此时元素的宽高指的是content-box的宽高
@@ -153,6 +157,7 @@
     ```
 20. 如何在伪元素中插入换行符？如何让这个换行符在页面中生效？
 * \A
+* white-space: pre
 21. 简述 ie7 市场份额比 ie6 低的原因并在网络上找出目前各大浏览器在中国和全球的市场份额
 * 
 22. 页面有无 `doctype` 声明会有什么区别？
@@ -187,22 +192,22 @@
 26. 简述 em 框，内容区，行内框，行框的构成以及其需要注意的问题。
 * em框：由字体和字号决定，理论上em框高度应与字号相等，但实际上往往偏大
 * 内容区：一行em框组成了内容区
-* 行内框：em框上下各加半间距形成了行内框
+* 行内框：对inline元素是em框上下各加半间距形成了行内框，对inline替换元素和inline-block元素是margin-box
 * 行框：最高行内框的上边框和最低行内框的下边框形成了行框
 27. 如何确定一个行内框的baseline及其最高点和最低点？
 * 小写x的下边缘
 * 最高点是上半间距的上边缘，最低点是下半间距的下边缘
 28. `td` 元素的 `headers` 属性是干嘛的？
-* 
+* 将该td元素与特定th元素进行关联，有助于读屏软件读取单元格表头
 29. color 这个属性有什么需要注意的地方？
-* 被设置为border的corlor
+* 各处颜色可能直接用color的值作为其默认值
 30. 如何理解 inline-block 元素？它有什么需要注意的地方？
 * 布局方式为行内级盒的块级盒
 * 行内布局时的基线位置、两个inline-bolock元素之间的间隙
 31. 什么是 CSS Sprite？为什么要使用 CSS Sprite？它有哪些优缺点？
 * 将网页的一些背景图片汇集为一张大背景图片
-* 减少多张图片的下载时间，更快呈现页面内容，提高用户体验
-* 缺点是开发人员需要知道Sprite上每个小图片的位置，并且Sprite增删图片也会影响页面代码
+* 节省文件大小，减少多张图片的下载时间，更快呈现页面内容，提高用户体验
+* 不能是动图，不方便维护
 32. 找出如下代码中的错误
     ```
     <style>
@@ -219,7 +224,7 @@
       <a href="mi.com”>小米网<a>
     </div>
     ```
-* :hover应该写在:visited后面、::after应该写在:hover后面、opacity的值域为[0, 1]、transition的steps
+* :visited只能设置颜色、::after应该写在:hover后面、opacity的值域为[0, 1]、transition的steps
 33. 如下内容渲染在【同一行】中，请计算那一行的理论行高
     ```html
     <!DOCTYPE html>
@@ -270,17 +275,17 @@
     </body>
     </html>
     ```
-* 
+* 62px
 34. `vertical-align` 取值为 `baseline` 时在不同情况下分别是如何对齐的？
 * 无文字的非替换inline-block元素和替换元素的下外边距和父元素的基线对齐
 * 有文字的非替换inline-block元素最后一行文字的基线和父元素的基线对齐
 35. 解释常规流与包含块的概念
 * 不是绝对定位和浮动
-* 包含块由块级盒产生，用来指示子元素的盒如何进行布局，
+* 包含块由块级盒产生，用来指示子元素的盒如何进行布局
 36. 在各种情况下，一个元素的包含块分别是什么？
-* html元素的包含块为初始包含块、常规流中元素的包含块为父元素的块级盒的content-box
+* html元素的包含块为初始包含块，常规流中元素的包含块为父元素的块级盒的content-box，固定定位的包含块为视口，绝对定位的包含块为定位祖先，浮动同常规流
 37. 默写与背景相关的属性并说明每个属性的作用和会产生的效果
-* background-images：指定背景图片；可指定多个，后面的被前面的覆盖
+* background-image：指定背景图片；可指定多个，后面的被前面的覆盖
 * background-position：指定背景的位置，使用百分数时背景和元素的百分位置对齐；其他情况则按图片的左上角
 * background-size：指定图片的大小
 * background-repeat：指定图片是否重复
@@ -290,29 +295,32 @@
 38. 如何实现单方向的盒子阴影？
 * 配合负值扩展半径
 39. 默写与表格布局相关的 CSS 属性，并说明相关属性的作用
-* 
+* display: table/table-column-group/table-column/table-row-group/table-row/table-cell
+* table-layout: fixed/auto
+* border-collapse: separate/collapse
+* empty-cells:show/hide
 40. `visibility:hidden`，`display:none`，`opacity:0`分别有什么不同？
-* 第一个渲染元素再视觉隐藏不可交互，第二个未渲染元素不可交互，第三个渲染元素再视觉透明仍可交互
+* 第一个渲染元素但视觉隐藏不可交互，第二个未渲染元素不可交互，第三个渲染元素再视觉透明仍可交互
 41. 当页面中出现表示时间的文字但表意不明确时，比较优雅且富有语义的做法是什么？
 * 与当前时间做差，并显示为“已过去×××”、”昨天“等等
 42. CSS 中一般为何不使用 `cm`，`mm` 等长度单位？
-* 
+* 屏幕一般不使用实际物理单位来度量
 43. 表格布局中各层的层次是？
-* 
+* 单元格、行、行组、列、列祖、表格
 44. 为什么要在文件的最后一行加一个回车？
-* 
+* 方便拼接文件
 45. 用 CSS 画出一个半圆形，分别给出实心与空心的的画法。实心和空心分别给出两种方案。
 * 空心：border-radius: 50% 50% 0 0/100% 100% 0 0；
 * 实心：
 46. 表单元素有哪些伪类选择器？
-* 
+* :checked :required/:optional :valid/:invalid :in-range/:out-of-range :readonly/:readwrite
 47. 如何禁用 textarea 元素默认的可缩放行为？
-* css中设置元素的min-width和max-width
+* resize: none/both/horizontal/vertical
 48. reset与normalize分别是什么，区别是什么，何种场景会使用到？
-* reset相当于革命开创新纪元
-* normalize相当于改革走向新世纪
+* reset把页面样式统一为特定风格
+* normalize统一各个浏览器的默认样式
 49. 表布局中边框合并的原则是什么？
-* 宽度 > 颜色 > 层次
+* border:hidden > 边框粗细 > 边框样式（双>单>虚）>表层顺序>border:none
 50. 如何让背景图片从元素的左下角向上偏移5像素，往右偏移3像素；图片不重复平铺？写出代码。
     ```css
     .bg {
@@ -334,8 +342,39 @@
         └─y
                 a.js
     ```
-* 
+* mkdir a
+* touch readme.md
+* mkdir a/foo
+* mkdir a/foo/c
+* mkdir a/bar
+* touch a/bar/a.txt
+* touch a/bar/b.txt
+* mkdir a/bar/y
+* touch a/bar/y/a.js
 52. 中英互翻
 
     omit，multiple，驼峰式，中划线式，layout，typo，code review，半径，config，集合，矩形，binary，decimal，十六进制，八进制，SEO，HTML实体，语义化，兼容性，quirk，reference，大小写敏感，别名
-* 
+* 忽略
+* 多个，乘法
+* camel case
+* kebab case
+* 布局
+* 拼写错误
+* 代码检查
+* radius
+* diameter
+* 配置
+* set
+* rectangle
+* 二进制
+* 十进制
+* hexdecimal
+* octet
+* search engine optimise
+* html entity
+* semantic
+* compatility
+* 怪异模式
+* 参考
+* case sensitive
+* alias
