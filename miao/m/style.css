@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: calc(100vw / 3.2);
+}
+body {
+  margin: 0;
+  font-size: .12rem;
+  line-height: normal;
+}
+header {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+}
+header .top {
+  display: flex;
+  height: .3733rem;
+  align-items: center;
+}
+header .top > div {
+  height: 0.2866rem;
+  display: flex;
+}
+header .top .logo {
+  width: .4441rem;
+  justify-content: center;
+}
+header .top .logo img {
+  width: 50%;
+  align-self: center;
+}
+header .top .search-bar {
+  flex: 1;
+  color: #b4b4b4;
+  background-color: #ffffff;
+}
+header .top .search-bar i {
+  width: .2866rem;
+  align-self: center;
+  text-align: center;
+}
+header .top .search-bar span {
+  align-self: center;
+}
+header .top .user {
+  width: .4441rem;
+  color: #8a8a8a;
+}
+header .top .user i {
+  flex: 1;
+  align-self: center;
+  text-align: center;
+}
+header .menu {
+  height: 0.26rem;
+}
+main .hero {
+  height: 1.6rem;
+}
+main .cells {
+  display: flex;
+  flex-flow: row wrap;
+}
+main .cells .cell {
+  width: 0.64rem;
+  height: 0.6755rem;
+}
+main .cells .cell img {
+  width: 100%;
+}
+main .ads {
+  display: flex;
+  flex-flow: column wrap;
+  height: 2.2577rem;
+  font-size: 0;
+}
+main .ads .big {
+  width: 1.5911rem;
+  height: 100%;
+}
+main .ads .small {
+  width: 1.5911rem;
+  flex: 1;
+}
+main .ads img {
+  width: 100%;
+}
+footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 0.52rem;
+  background-color: #f2f2f2;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+footer div {
+  flex: auto;
+  color: #a1a1a1;
+}

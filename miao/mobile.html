@@ -6,37 +6,47 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    body {
+    html {
+      font-size: 12.5vw;
       position: relative;
-      padding: 50% 0;
-      box-sizing: border-box;
     }
     img {
-      width: calc(100% * 240 / 800);
+      width: 2.5rem;
+      height: 3.5rem;
       position: absolute;
     }
-    img:nth-child(1) {
-      left: calc(100% * 160 / 800);
-      z-index: 1;
+    .a {
+      left: 1.5rem;
+      top: 0.5rem;
     }
-    img:nth-child(2) {
-      top: calc(100% * 150 / 800 + 100% / 2);
-      left: calc(100% * 280 / 800);
-      z-index: 2;
+    .b {
+      left: 2.75rem;
+      top: 2.25rem;
     }
-    img:nth-child(3) {
-      top: calc(100% * 300 / 800 + 100% / 2);
-      left: calc(100% * 400 / 800);
-      z-index: 1;
+    .c {
+      left: 4rem;
+      top: 4rem;
     }
-    img:hover {
-      z-index: 3;
+    span {
+      border: 1px solid;
+    }
+    .d {
+      width: 3rem;
+      height: 1.5rem;
+      background-color: #eee;
+      border: 1px solid;
+      line-height: 1.15;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <img src="https://daneden.imgix.net/2018/10/portrait.jpg?auto=format&dpr=2&fm=pjpg&crop=faces&fit=max&w=200&h=300&ixlib=react-7.2.0" alt="">
-  <img src="https://daneden.imgix.net/2018/10/GenArt.png?auto=format&dpr=2&fm=pjpg&crop=faces&fit=max&w=300&h=500&ixlib=react-7.2.0" alt="">
-  <img src="https://daneden.imgix.net/2018/10/home.jpg?auto=format&dpr=3&fm=pjpg&crop=faces&fit=max&w=300&h=400&ixlib=react-7.2.0" alt="">
+  
+  <img class="a" src="https://daneden.imgix.net/2018/10/portrait.jpg?auto=format&dpr=2&fm=pjpg&crop=faces&fit=max&w=200&h=300&ixlib=react-7.2.0" alt="">
+  <img class="b" src="https://daneden.imgix.net/2018/10/GenArt.png?auto=format&dpr=2&fm=pjpg&crop=faces&fit=max&w=300&h=500&ixlib=react-7.2.0" alt="">
+  <img class="c" src="https://daneden.imgix.net/2018/10/home.jpg?auto=format&dpr=3&fm=pjpg&crop=faces&fit=max&w=300&h=400&ixlib=react-7.2.0" alt="">
+  <div class="d">
+    <span>好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上好好学习，天天向上</span>
+  </div>
 </body>
 </html>
