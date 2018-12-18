@@ -1,4 +1,46 @@
-<script id="ch0101/10">
+<script id="ch0101/01" type="a">
+  console.log('Hello, World!');
+</script>
+<script id="ch0101/02" type="a">
+  var a = prompt();
+  var b = prompt();
+  var c = prompt();
+  console.log(b);
+</script>
+<script id="ch0101/03" type="a">
+  var a = prompt();
+  var b = prompt();
+  var c = prompt();
+  console.log('')
+</script>
+<script id="ch0101/04" type="a">
+  var a = +prompt();
+  console.log(a.toFixed(3));
+</script>
+<script id="ch0101/05" type="a">
+  var a = +prompt();
+  console.log(a.toFixed(12));
+</script>
+<script id="ch0101/06" type="a">
+  var a = prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var d = +prompt();
+  console.log('%s %d %s %s', a, b, c.toFixed(6), d.toFixed(6));
+</script>
+<script id="ch0101/07" type="a">
+  var a = +prompt();
+  console.log('%s %s %s %s', 'pia', a.toFixed(5), a.toExponential(), 'pia');
+</script>
+<script id="ch0101/08" type="a">
+  var a = prompt();
+  console.log('  ' + a + '\n ' + a + a + a + '\n' + a + a + a + a + a);
+</script>
+<script id="ch0101/09" type="a">
+  var a = prompt();
+  console.log('  ' + a + '\n ' + a + a + a + '\n' + a + a + a + a + a + '\n ' + a + a + a + '\n  ' + a);
+</script>
+<script id="ch0101/10" type="a">
   console.log(`                ********
                ************
                ####....#.
@@ -21,4 +63,129 @@
 ##########################################    #----------#                  ##############    #----------#
 #.#..#....#..##.#..#....#..##.#..#....#..#    #----------#                  #.#..#....#..#    #----------#
 ##########################################    ############                  ##############    ############`);
+</script>
+<script id="ch0102/06" type="a">
+  var a = +prompt();
+  console.log('%d', a>0?Math.floor(a):Math.ceil(a));
+</script>
+<script id="ch0102/07" type="a">
+  var a = prompt();
+  console.log('%d', a.charCodeAt());
+</script>
+<script id="ch0102/08" type="a">
+  var a = prompt();
+  console.log('%s', String.fromCharCode(a));
+</script>
+<script id="ch0103/01" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  console.log('%d', a + b);
+</script>
+<script id="ch0103/02" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  console.log('%d', (a + b) * c);
+</script>
+<script id="ch0103/03" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  console.log('%d', (a + b) / c);
+</script>
+<script id="ch0103/04" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  console.log('%d %d', Math.trunc(a / b), a % b);
+</script>
+<script id="ch0103/05" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  console.log('%s', (a / b).toFixed(9)));
+</script>
+<script id="ch0103/06" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  console.log('%s%', (100 * b / a).toFixed(3)));
+</script>
+<script id="ch0103/07" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var d = +prompt();
+  var e = +prompt();
+  console.log('%s%', (b * a ** 3 + c * a ** 2 + d * a + e).toFixed(7)));
+</script>
+<script id="ch0103/08" type="a">
+  var a = +prompt();
+  console.log('%s', (5 * (a - 32) / 9).toFixed(5));
+</script>
+<script id="ch0103/09" type="a">
+  var a = +prompt();
+  console.log('%s %s %s', (2 * a).toFixed(4), (2 * a * Math.PI).toFixed(4), (Math.PI * a ** 2).toFixed(4));
+</script>
+<script id="ch0103/10" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  console.log('%s', (1 / (1 / a + 1 / b)).toFixed(2));
+</script>
+<script id="ch0103/11" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  console.log('%s', a % b);
+</script>
+<script id="ch0103/12" type="a">
+  var a = +prompt();
+  console.log('%s', (4 / 3 * Math.PI * a ** 3).toFixed(2));
+</script>
+<script id="ch0103/13" type="a">
+  var a = +prompt();
+  console.log('%d', a % 10, Math.trunc(a / 10) % 10, Math.trunc(a / 100));
+</script>
+<script id="ch0103/14" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  console.log('%d', Math.ceil(20000 / (Math.PI * a * b *b)));
+</script>
+<script id="ch0103/15" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  console.log('%d', a - Math.ceil(c / b));
+</script>
+<script id="ch0103/16" type="a">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var d = +prompt();
+  console.log('%s', (Math.sqrt(a * a + b * b + c * c + d * d)).toFixed(3));
+</script>
+<script id="ch0103/17" type="a">
+  var A1 = +prompt();
+  var A2 = +prompt();
+  var B1 = +prompt();
+  var B2 = +prompt();
+  var C1 = +prompt();
+  var C2 = +prompt();
+  var a = Math.sqrt((B1 - A1) ** 2 + (B2 - A2) ** 2);
+  var b = Math.sqrt((C1 - A1) ** 2 + (C2 - A2) ** 2);
+  var c = Math.sqrt((C1 - B1) ** 2 + (C2 - B2) ** 2);
+  var p = (a + b + c) / 2;
+  console.log('%s', (Math.sqrt(p * (a / 2 - b -c) * (b / 2 - a -c) * (c / 2 - a -b))).toFixed(2));
+</script>
+<script id="ch0103/18" type="a">
+  var a1 = +prompt();
+  var a2 = +prompt();
+  var n = +prompt();
+  var d = a1 - a2;
+  console.log('%d', a1 + (n - 1) * d);
+</script>
+<script id="ch0103/19" type="a">
+  var a1 = +prompt();
+  var a2 = +prompt();
+  console.log('%d', a1 * a2);
+</script>
+<script id="ch0103/20" type="a">
+  var a1 = +prompt();
+  console.log('%d', 2 ** a1);
 </script>
