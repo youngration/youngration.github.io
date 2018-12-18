@@ -93,7 +93,7 @@
   var a = +prompt();
   var b = +prompt();
   var c = +prompt();
-  var d = (a + b) / c;
+  var d = Math.trunc((a + b) / c);
   console.log(d);
 </script>
 <script id="ch0103/04" type="a">
@@ -111,7 +111,7 @@
 <script id="ch0103/06" type="a">
   var a = +prompt();
   var b = +prompt();
-  var c = (100 * b / a).toFixed(3);
+  var c = (100 * b / a).toFixed(3) + '%';
   console.log(c);
 </script>
 <script id="ch0103/07" type="a">
@@ -130,7 +130,7 @@
 </script>
 <script id="ch0103/09" type="a">
   var a = +prompt();
-  var b = (2 * a).toFixed(4) + ' ' + (2 * a * Math.PI).toFixed(4) + ' ' + (Math.PI * a ** 2).toFixed(4);
+  var b = (2 * a).toFixed(4) + ' ' + (2 * a * 3.14159).toFixed(4) + ' ' + (3.14159 * a ** 2).toFixed(4);
   console.log(b);
 </script>
 <script id="ch0103/10" type="a">
@@ -142,12 +142,12 @@
 <script id="ch0103/11" type="a">
   var a = +prompt();
   var b = +prompt();
-  var c = a % b;
+  var c = (a % b).toFixed(4);
   console.log(c);
 </script>
 <script id="ch0103/12" type="a">
   var a = +prompt();
-  var b = (4 / 3 * Math.PI * a ** 3).toFixed(2);
+  var b = (4 / 3 * 3.14 * a ** 3).toFixed(2);
   console.log(b);
 </script>
 <script id="ch0103/13" type="a">
@@ -173,7 +173,7 @@
   var b = +prompt();
   var c = +prompt();
   var d = +prompt();
-  var e = (Math.sqrt(a * a + b * b + c * c + d * d)).toFixed(3);
+  var e = (Math.sqrt((c - a) ** 2 + (d - b) ** 2)).toFixed(3);
   console.log(e);
 </script>
 <script id="ch0103/17" type="a">
@@ -187,14 +187,14 @@
   var b = Math.sqrt((C1 - A1) ** 2 + (C2 - A2) ** 2);
   var c = Math.sqrt((C1 - B1) ** 2 + (C2 - B2) ** 2);
   var p = (a + b + c) / 2;
-  var q = (Math.sqrt(p * (a / 2 - b -c) * (b / 2 - a -c) * (c / 2 - a -b))).toFixed(2);
+  var q = (Math.sqrt(p * (-a / 2 + b + c) * (-b / 2 + a + c) * (-c / 2 + a + b))).toFixed(2);
   console.log(q);
 </script>
 <script id="ch0103/18" type="a">
   var a1 = +prompt();
   var a2 = +prompt();
   var n = +prompt();
-  var d = a1 - a2;
+  var d = a2 - a1;
   var e = a1 + (n - 1) * d;
   console.log(e);
 </script>
