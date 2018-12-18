@@ -176,7 +176,7 @@
   var e = (Math.sqrt((c - a) ** 2 + (d - b) ** 2)).toFixed(3);
   console.log(e);
 </script>
-<script id="ch0103/17" type="a">
+<script id="ch0103/17">
   var A1 = +prompt();
   var A2 = +prompt();
   var B1 = +prompt();
@@ -187,7 +187,7 @@
   var b = Math.sqrt((C1 - A1) ** 2 + (C2 - A2) ** 2);
   var c = Math.sqrt((C1 - B1) ** 2 + (C2 - B2) ** 2);
   var p = (a + b + c) / 2;
-  var q = (Math.sqrt(p * (-a / 2 + b + c) * (-b / 2 + a + c) * (-c / 2 + a + b))).toFixed(2);
+  var q = (Math.sqrt(p * (-a + b + c) * (-b + a + c) * (-c + a + b) / 8)).toFixed(2);
   console.log(q);
 </script>
 <script id="ch0103/18" type="a">
