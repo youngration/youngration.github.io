@@ -209,3 +209,277 @@
   var b = 2 ** a1
   console.log(b);
 </script>
+<script id="ch0104/01">
+  var a = +prompt();
+  var r;
+  if(a > 0) {
+    r = 'positive';
+  } else if(a === 0) {
+    r = 'negative';
+  } else {
+    r = 'zero';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/02">
+  var a = +prompt();
+  var r;
+  if(a < 0) {
+    r = (-a).toFixed(2);
+  } else {
+    r = a.toFixed(2)
+  }
+  console.log(r);
+</script>
+<script id="ch0104/03">
+  var a = +prompt();
+  var r;
+  if(a%2 === 0) {
+    r = 'even';
+  } else {
+    r = 'odd';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/04">
+  var a = +prompt();
+  var r;
+  a = a.charCodeAt();
+  if(a%2 === 0) {
+    r = 'NO';
+  } else {
+    r = 'YES';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/05">
+  var a = +prompt();
+  var b = +prompt();
+  var r;
+  if(a > b) {
+    r = '>';
+  } else if(a < b) {
+    r = '<';
+  } else {
+    r = '=';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/06">
+  var a = +prompt();
+  var r;
+  if(a>=10 && a<=99) {
+    r = 1;
+  } else {
+    r = 0;
+  }
+  console.log(r);
+</script>
+<script id="ch0104/07">
+  var a = +prompt();
+  var b = +prompt();
+  var r;
+  if(a>=10 || b>=20) {
+    r = 1;
+  } else {
+    r = 0;
+  }
+  console.log(r);
+</script>
+<script id="ch0104/08">
+  var a = +prompt();
+  var r;
+  if(a%15 === 0) {
+    r = 'YES';
+  } else {
+    r = 'NO';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/09">
+  var a = +prompt();
+  var b = true;
+  var r = '';
+  if(a%3 === 0) {
+    r += '3';
+    b = false;
+  }
+  if(a%5 === 0) {
+    r += r && ' ' + '5';
+    b = false;
+  }
+  if(a%7 === 0) {
+    r += r && ' ' + '7';
+    b = false;
+  }
+  if(b) {
+    r = 'n';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/10">
+  var a = +prompt();
+  var b = +prompt();
+  var r;
+  a = Math.trunc(a/60) || 0;
+  b = Math.trunc(b/60) || 0;
+  if(a ^ b) {
+    r = 1;
+  } else {
+    r = 0;
+  }
+  console.log(r);
+</script>
+<script id="ch0104/11">
+  var a = +prompt();
+  var r;
+  if(a===1 || a===3 || a===5) {
+    r = 'NO';
+  } else {
+    r = 'YES';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/12">
+  var a = +prompt();
+  var r;
+  var bt = 50 + a / 3;
+  var wt = a / 1.2;
+  if(bt > wt) {
+    r = 'Walk';
+  } else if(bt === wt) {
+    r = 'All';
+  } else {
+    r = 'Bike';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/13">
+  var a = +prompt();
+  var r;
+  if(a>=0 && a<5) {
+    r = (-a + 2.5).toFixed(3);
+  } else if(a>=5 && a<10) {
+    r = (2 - 1.5 * (a - 3) * (a - 3)).toFixed(3);
+  } else {
+    r = (a / 2 - 1.5).toFixed(3);
+  }
+  console.log(r);
+</script>
+<script id="ch0104/14">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 8;
+  if(a > 1000) {
+    a = a - 1000;
+    r += Math.ceil(a/500) * 4;
+  }
+  if(b === 'y') {
+    r += 5;
+  }
+  console.log(r);
+</script>
+<script id="ch0104/15">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var r;
+  if(a > b) {
+    r = a;
+  } else {
+    r = b;
+  }
+  if(r < c) {
+    r = c;
+  }
+  console.log(r);
+</script>
+<script id="ch0104/16">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var r;
+  if(a>Math.abs(b-c) && a<b+c && b>Math.abs(a-c) && b<a+c && c>Math.abs(b-a) && c<b+a) {
+    r = 'yes';
+  } else {
+    r = 'no';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/17">
+  var a = +prompt();
+  var r;
+  if(a%400===0 || a%100!==0 && a%4===0) {
+    r = 'Y';
+  } else {
+    r = 'N';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/18">
+  var a = +prompt();
+  var b = +prompt();
+  var r;
+  if(a*b>=-1 && a*b<=1) {
+    r = 'yes';
+  } else {
+    r = 'no'
+  }
+  console.log(r);
+</script>
+<script id="ch0104/19">
+  var a = +prompt();
+  var b = +prompt();
+  var c = prompt();
+  var r;
+  if(c === '+') {
+    r = a + b;
+  } else if(c === '-') {
+    r = a - b;
+  } else if(c === '*') {
+    r = a * b;
+  } else if(c === '/') {
+    if(b === 0) {
+      r = 'Divided by zero';
+    } else {
+      r = a / b;
+    }
+  } else {
+    r = 'Invalid operator!';
+  }
+  console.log(r);
+</script>
+<script id="ch0104/20">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var r, x1 = '', x2 = '';
+  var d = b * b - 4 * a * c;
+  if(d === 0) {
+    r = 'x1=x2=' + (-b / 2 / a).toFixed(5);
+  } else if(d > 0) {
+    d = Math.sqrt(d);
+    x1 += ((-b+d)/2/a).toFixed(5);
+    x2 += ((-b-d)/2/a).toFixed(5);
+    r = 'x1=' + x1 + ';x2=' + x2;
+  } else {
+    d = Math.sqrt(-d);
+    x1 += (-b/2/a).toFixed(5) + (d/2/a).toFixed(5) + 'i';
+    x2 += (-b/2/a).toFixed(5) + (-d/2/a).toFixed(5) + 'i';
+    r = 'x1=' + x1 + ';x2=' + x2;
+  }
+  console.log(r);
+</script>
+<script id="ch0104/21">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var r;
+  r = Math.ceil(c / b);
+  if(r > a) {
+    r = 0;
+  } else {
+    r = a - r;
+  }
+  console.log(r);
+</script>
