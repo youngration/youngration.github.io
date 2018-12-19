@@ -242,7 +242,7 @@
   console.log(r);
 </script>
 <script id="ch0104/04">
-  var a = +prompt();
+  var a = prompt();
   var r;
   a = a.charCodeAt();
   if(a%2 === 0) {
@@ -368,7 +368,7 @@
 </script>
 <script id="ch0104/14">
   var a = +prompt();
-  var b = +prompt();
+  var b = prompt();
   var r = 8;
   if(a > 1000) {
     a = a - 1000;
@@ -453,19 +453,19 @@
   var a = +prompt();
   var b = +prompt();
   var c = +prompt();
-  var r, x1 = '', x2 = '';
+  var r, x1, x2;
   var d = b * b - 4 * a * c;
   if(d === 0) {
     r = 'x1=x2=' + (-b / 2 / a).toFixed(5);
   } else if(d > 0) {
     d = Math.sqrt(d);
-    x1 += ((-b+d)/2/a).toFixed(5);
-    x2 += ((-b-d)/2/a).toFixed(5);
+    x1 = ((-b+d)/2/a).toFixed(5);
+    x2 = ((-b-d)/2/a).toFixed(5);
     r = 'x1=' + x1 + ';x2=' + x2;
   } else {
     d = Math.sqrt(-d);
-    x1 += (-b/2/a).toFixed(5) + (d/2/a).toFixed(5) + 'i';
-    x2 += (-b/2/a).toFixed(5) + (-d/2/a).toFixed(5) + 'i';
+    x1 = '' + (-b/2/a).toFixed(5) + (d/2/a).toFixed(5) + 'i';
+    x2 = '' + (-b/2/a).toFixed(5) + (-d/2/a).toFixed(5) + 'i';
     r = 'x1=' + x1 + ';x2=' + x2;
   }
   console.log(r);
