@@ -464,8 +464,8 @@
     r = 'x1=' + x1 + ';x2=' + x2;
   } else {
     d = Math.sqrt(-d);
-    x1 = '' + (-b/2/a).toFixed(5) + (d/2/a).toFixed(5) + 'i';
-    x2 = '' + (-b/2/a).toFixed(5) + (-d/2/a).toFixed(5) + 'i';
+    x1 = (-b/2/a).toFixed(5) + '+' + (d/2/a).toFixed(5) + 'i';
+    x2 = (-b/2/a).toFixed(5) + '' + (-d/2/a).toFixed(5) + 'i';
     r = 'x1=' + x1 + ';x2=' + x2;
   }
   console.log(r);
