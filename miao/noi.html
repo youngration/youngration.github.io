@@ -483,3 +483,626 @@
   }
   console.log(r);
 </script>
+<script id="ch0105/01">
+  var a = +prompt();
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    r += +prompt();
+  }
+  r = (r / a).toFixed(2);
+  console.log(r);
+</script>
+<script id="ch0105/02">
+  var r = 0;
+  for(var i=0; i<12; i++) {
+    r += +prompt();
+  }
+  r = '$' + (r / 12).toFixed(2);
+  console.log(r);
+</script>
+<script id="ch0105/03">
+  var a = +prompt();
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    r += +prompt();
+  }
+  r = (r / a).toFixed(4);
+  console.log(r);
+</script>
+<script id="ch0105/04">
+  var a = +prompt();
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    r += prompt();
+  }
+  r = r + ' ' + (r / a).toFixed(5);
+  console.log(r);
+</script>
+<script id="ch0105/05">
+  var a = +prompt();
+  var b;
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    b = +prompt();
+    if(r < b) {
+      r = b;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/06">
+  var a = +prompt();
+  var b;
+  var c = 0;
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    b = +prompt();
+    if(r < b) {
+      r = b;
+    }
+    if(c > b) {
+      c = b;
+    }
+  }
+  r = r - c;
+  console.log(r);
+</script>
+<script id="ch0105/07">
+  var a = +prompt();
+  var b = 0;
+  var c = 0;
+  var d = 0;
+  var r;
+  for(var i=0; i<a; i++) {
+    b += +prompt();
+    c += +prompt();
+    d += +prompt();
+  }
+  r = b + ' ' + c + ' ' + d + ' ' + (b+c+d);
+  console.log(r);
+</script>
+<script id="ch0105/08">
+  var a = +prompt();
+  var r;
+  for(var i=0; i<a-1; i++) {
+    r += +prompt();
+  }
+  r = 180 * (a-1) - r;
+  console.log(r);
+</script>
+<script id="ch0105/09">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 0;
+  for(var i=a; i<=b; i++) {
+    if(i % 2){
+      r += i;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/10">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 0;
+  for(var i=a; i<=b; i++) {
+    if(!i%17) {
+      r += i;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/11">
+  var a = +prompt();
+  var b = 0;
+  var c = 0;
+  var d = 0;
+  for(var i=0; i<a; i++) {
+    if(i === 1) {
+      b++;
+    } else if(i === 5) {
+      c++;
+    } else if(i === 10) {
+      d++;
+    }
+  }
+  console.log(b+'\n'+c+'\n'+d);
+</script>
+<script id="ch0105/12">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    if(b === +prompt()) {
+      r++;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/13">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 1;
+  for(var i=0; i<b; i++) {
+    r *= a;
+  }
+  console.log(r);
+</script>
+<script id="ch0105/14">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 1;
+  for(var i=0; i<b) {
+    r *= 1.001;
+  }
+  r *= a;
+  console.log(r);
+</script>
+<script id="ch0105/15">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var r = 1;
+  for(var i=0; i<c; i++) {
+    r *= 1 + a / 100;
+  }
+  r = Math.trunc(r*b);
+  console.log(r);
+</script>
+<script id="ch0105/16">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 1;
+  for(var i=0; i<20; i++) {
+    r *= 1 + b / 100;
+  }
+  if(200*r > 20*a) {
+    r = 'Impossible';
+  } else {
+    r = Math.ceil(200 * r / a);
+  }
+  console.log(r);
+</script>
+<script id="ch0105/17">
+  var a = +prompt();
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    r += i>2 ? i : 1;
+  }
+  console.log(r);
+</script>
+<script id="ch0105/18">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var d, e;
+  var r = c / b;
+  for(var i=0; i<a-1; i++) {
+    d = +prompt();
+    e = +prompt();
+    if(e/d-r > 0.05) {
+      console.log('better');
+    } else if(r-e/d < 0.05) {
+      console.log('worse');
+    } else {
+      console.log('same');
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/19">
+  var a = +prompt();
+  var b = 0;
+  var c = 0;
+  var d, e;
+  var f = 0;
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    d = +prompt();
+    e = +prompt();
+    f += +prompt();
+    r += Math.sqrt((d-b) ** 2 + (e-c) ** 2);
+    b = d;
+    c = e;
+  }
+  r = Math.ceil(r / 50 + f * 1.5);
+  console.log(r);
+</script>
+<script id="ch0105/20">
+  var a = +prompt();
+  var r = 0;
+  for(var i=0; i<10; i++) {
+    r += a + a / 2;
+    a /= 2;
+  }
+  r = r - a + ' ' + a;
+  console.log(r);
+</script>
+<script id="ch0105/21">
+  var a = +prompt();
+  while(a !== 1) {
+    if(a % 2) {
+      console.log(a + '*3' + '+1=' + (a*3+1));
+    } else {
+      console.log(a + '/2=' + a / 2);
+    }
+  }
+  console.log('End');
+</script>
+<script id="ch0105/22">
+  var a = 0;
+  var b;
+  var r = 0;
+  for(var i=0; i<12; i++) {
+    b = +prompt();
+    if(a-b+300 < 0) {
+      r = -(i+1);
+      break;
+    } else {
+      r += Math.trunc((a-b+300)/100) * 100;
+      a = (a-b+300) % 100;
+    }
+  }
+  if(r > 0) {
+    r *= 1.2;
+  }
+  console.log(r);
+</script>
+<script id="ch0105/23">
+  var a = +prompt();
+  var b = +prompt();
+  var c;
+  var r = 0;
+  for(var i=0; i<b; i++) {
+    c = +prompt();
+    if(c > a) {
+      r++;
+    } else {
+      a -= c;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/24">
+  var a = +prompt();
+  var b = 0;
+  var c, d;
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    c = +prompt();
+    d = +prompt();
+    if(c>=90 && c<=140 && d>=60 && d<=90) {
+      b++;
+    } else if(b > r) {
+      r = b;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/25">
+  for(var i=1; i<7; i++) {
+    for(var j=0; j<7; j++) {
+      for(var k=1; k<7; k++) {
+        if(24*i+j === 40*k) {
+          console.log(24 * i + j - 40 * k);
+          console.log('' + i + j + k);
+          console.log('' + k + j + i);
+          break;
+        }
+      }
+    }
+  }
+</script>
+<script id="ch0105/26">
+  var a = +prompt();
+  var b;
+  var c = 0;
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    b = +prompt();
+    for(var j=0; j<4; j++) {
+      c = b % 10 - c;
+      b = b / 10 | 0;
+    }
+    if(c > 0) {
+      r++;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/27">
+  var a = +prompt();
+  var r = 0;
+  for(var i=1;; i++) {
+    r += 1 / i;
+    if(r > a) {
+      r = i;
+      break;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/28">
+  var a = +prompt();
+  var r = '';
+  while(a > 0) {
+    r += r&&' ' + a % 10;
+    a = a / 10 | 0;
+  }
+  console.log(r);
+</script>
+<script id="ch0105/29">
+  var a = +prompt();
+  var b;
+  var r = 0.1;
+  if(a < 0) {
+    b = -a;
+  }
+  while(b > 0) {
+    r = b % 10 * 10;
+    b = b / 10 | 0;
+  }
+  if(a < 0) {
+    r = -r;
+  }
+  console.log(r);
+</script>
+<script id="ch0105/30">
+  var a = +prompt();
+  var b = +prompt();
+  var r;
+  if(! (a % 19)) {
+    while(a > 0) {
+      if(b%10 === 3) {
+        b--;
+      }
+      a = a / 10 | 0;
+    }
+    if(b) {
+      r = 'NO';
+    } else {
+      r = 'YES';
+    }
+  } else {
+    r = 'NO';
+  }
+  console.log(r);
+</script>
+<script id="ch0105/31">
+  var a = +prompt();
+  var b = +prompt();
+  var c;
+  var r = '';
+  for(var i=1; i<=a; i++) {
+    c = 1;
+    for(var j=1; j<=b; j++) {
+      if(i>j && !i%j) {
+        c = -c;
+      }
+    }
+    if(c<0) {
+      r += r&&',' + i;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/32">
+  var a = +prompt();
+  var b = 2;
+  var c = 1;
+  var d;
+  var r = 0;
+  for(var i=0; i<a; i++) {
+    r += b / c;
+    d = c;
+    c = b;
+    b += d;
+  }
+  console.log((r).toFixed(4));
+</script>
+<script id="ch0105/33">
+  var a = +prompt();
+  var r = 0;
+  for(var i=1; i<=n; i+=2) {
+    r += 1 / i - 1 / (i+1);
+  }
+  console.log((r).toFixed(4));
+</script>
+<script id="ch0105/34">
+  var a = +prompt();
+  var b;
+  var r = 0;
+  for(var i=1; i<=n; i++) {
+    b = 1;
+    for(var j=1; j<=i; j++) {
+      b *= j;
+    }
+    r += b;
+  }
+  console.log(r);
+</script>
+<script id="ch0105/35">
+  var a = +prompt();
+  var b;
+  var r = 0;
+  for(var i=1; i<=n; i++) {
+    b = 1;
+    for(var j=1; j<=i; j++) {
+      b *= j;
+    }
+    r += 1 / b;
+  }
+  console.log((r).toFixed(10));
+</script>
+<script id="ch0105/36">
+  var a = +prompt();
+  var b = +prompt();
+  var r = 0;
+  for(var i=0; i<=b; i++) {
+    r += Math.pow(a, i);
+  }
+  console.log((r).toFixed(2));
+</script>
+<script id="ch0105/37">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  while(b * c >= a) {
+    c -= Math.ceil(a / b);
+    for(var i=b; i<=a; i+=b) {
+      b++;
+    }
+  }
+  console.log(b);
+</script>
+<script id="ch0105/38">
+  var a = +prompt();
+  var b;
+  var r = '';
+  for(var i=a; i>=0; i--) {
+    b = +prompt();
+    r += r && ' ' + (i||1) * b;
+  }
+  console.log(r);
+</script>
+<script id="ch0105/39">
+  var a = +prompt();
+  var b, c;
+  var d = true;
+  var r = 0;
+  for(var i=1; i<=n; i++) {
+    if(! (i % 7)) {
+      continue;
+    }
+    b = i;
+    while(b > 0) {
+      c = b % 10;
+      b = b / 10 | 0;
+      if(c === 7) {
+        d = false;
+        break;
+      }
+    }
+    if(d) {
+      r += i;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/40">
+  var a = +prompt();
+  var b, c;
+  var r = 0;
+  for(var i=1; i<=a; i++) {
+    b = i;
+    while(b > 0) {
+      c = b % 10;
+      b = b / 10 | 0;
+      if(c === 1) {
+        r++;
+      }
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/41">
+  var a = +prompt();
+  var b = +prompt();
+  var c;
+  var r = 0;
+  for(var i=a; i<=b; i++) {
+    a = i;
+    while(a > 0) {
+      c = a % 10;
+      a = a / 10 | 0;
+      if(c === 2) {
+        r++;
+      }
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/42">
+  var a = +prompt();
+  var b = +prompt();
+  var c = prompt();
+  var d = +prompt();
+  var r;;
+  for(var i=1; i<=a; i++) {
+    r = ''；
+    if(!d && i>1 && i<a) {
+      r += c;
+      for(var j=0; j<b-2; j++) {
+        r += ' ';
+      }
+      r += c;
+    } else {
+      for(var j=0; j<b; j++) {
+        r += c;
+      }
+    }
+    console.log(r);
+  }
+</script>
+<script id="ch0105/43">
+  var a = +prompt();
+  var b = false;
+  var r;
+  for(var i=2; i<a; i++) {
+    if(i > 3) {
+      for(var j=2; j<=Math.sqrt(i); j++) {
+        if(! (i % j)) {
+          b = true;
+          break;
+        }
+      }
+    }
+    if(b) {
+      continue;
+    } else {
+      if(! (a % i)) {
+        r = a / i;
+        break;
+      }
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/44">
+  var a = +prompt();
+  var b;
+  var r;
+  if(a === 1) {
+    r = 2;
+  } else if(a === 2) {
+    r = 3;
+  } else {
+    a -= 2;
+    for(var i=4; a>0; i++) {
+      b = true;
+      for(var j=2; j<=Math.sqrt(i); j++) {
+        if(! (i % j)) {
+          b = false;
+          break;
+        }
+      }
+      r = b && --a || i;
+    }
+  }
+  console.log(r);
+</script>
+<script id="ch0105/45">
+  var a = +prompt();
+  var b = 0;
+  var r = 0;
+  for(var i=1;; i++) {
+    b += i;
+    if(b <= a) {
+      r += i * i;
+    } else {
+      r += i * (a-b+i);
+      break;
+    }
+  }
+  console.log(r);
+</script>
