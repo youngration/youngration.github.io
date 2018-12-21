@@ -563,7 +563,7 @@
 </script>
 <script id="ch0105/08">
   var a = +prompt();
-  var r;
+  var r = 0;
   for(var i=0; i<a-1; i++) {
     r += +prompt();
   }
@@ -609,7 +609,7 @@
       d++;
     }
   }
-  r = b+'\n'+c+'\n'+d;
+  r = b+' '+c+' '+d;
   console.log(r);
 </script>
 <script id="ch0105/12">
@@ -640,7 +640,7 @@
     r *= 1.001;
   }
   r *= a;
-  console.log(r);
+  console.log((r).toFixed(4));
 </script>
 <script id="ch0105/15">
   var a = +prompt();
@@ -668,9 +668,17 @@
 </script>
 <script id="ch0105/17">
   var a = +prompt();
-  var r = 0;
-  for(var i=0; i<a; i++) {
-    r += i>1 ? i : 1;
+  var b = 1;
+  var c = 2;
+  var r;
+  if(a < 3) {
+    r = 1
+  } else {
+    for(var i=3; i<=a; i++) {
+      r = b + c;
+      b = c;
+      c = r;
+    }
   }
   console.log(r);
 </script>
@@ -691,7 +699,6 @@
       console.log('same');
     }
   }
-  console.log(r);
 </script>
 <script id="ch0105/19">
   var a = +prompt();
@@ -912,7 +919,7 @@
 <script id="ch0105/33">
   var a = +prompt();
   var r = 0;
-  for(var i=1; i<=n; i+=2) {
+  for(var i=1; i<=a; i+=2) {
     r += 1 / i - 1 / (i+1);
   }
   console.log((r).toFixed(4));
