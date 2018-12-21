@@ -513,7 +513,7 @@
   var a = +prompt();
   var r = 0;
   for(var i=0; i<a; i++) {
-    r += prompt();
+    r += +prompt();
   }
   r = r + ' ' + (r / a).toFixed(5);
   console.log(r);
@@ -567,7 +567,7 @@
   for(var i=0; i<a-1; i++) {
     r += +prompt();
   }
-  r = 180 * (a-1) - r;
+  r = 180 * (a-2) - r;
   console.log(r);
 </script>
 <script id="ch0105/09">
@@ -586,7 +586,7 @@
   var b = +prompt();
   var r = 0;
   for(var i=a; i<=b; i++) {
-    if(!i%17) {
+    if(!(i%17)) {
       r += i;
     }
   }
@@ -597,16 +597,20 @@
   var b = 0;
   var c = 0;
   var d = 0;
+  var e;
+  var r;
   for(var i=0; i<a; i++) {
-    if(i === 1) {
+    e = +prompt();
+    if(e === 1) {
       b++;
-    } else if(i === 5) {
+    } else if(e === 5) {
       c++;
-    } else if(i === 10) {
+    } else if(e === 10) {
       d++;
     }
   }
-  console.log(b+'\n'+c+'\n'+d);
+  r = b+'\n'+c+'\n'+d;
+  console.log(r);
 </script>
 <script id="ch0105/12">
   var a = +prompt();
@@ -632,7 +636,7 @@
   var a = +prompt();
   var b = +prompt();
   var r = 1;
-  for(var i=0; i<b) {
+  for(var i=0; i<b; i++) {
     r *= 1.001;
   }
   r *= a;
@@ -652,14 +656,13 @@
 <script id="ch0105/16">
   var a = +prompt();
   var b = +prompt();
-  var r = 1;
-  for(var i=0; i<20; i++) {
+  var r = 200;
+  for(var i=1; i<=20; i++) {
+    if(r <= a*i) {
+      r = i;
+      break;
+    }
     r *= 1 + b / 100;
-  }
-  if(200*r > 20*a) {
-    r = 'Impossible';
-  } else {
-    r = Math.ceil(200 * r / a);
   }
   console.log(r);
 </script>
@@ -667,7 +670,7 @@
   var a = +prompt();
   var r = 0;
   for(var i=0; i<a; i++) {
-    r += i>2 ? i : 1;
+    r += i>1 ? i : 1;
   }
   console.log(r);
 </script>
@@ -682,7 +685,7 @@
     e = +prompt();
     if(e/d-r > 0.05) {
       console.log('better');
-    } else if(r-e/d < 0.05) {
+    } else if(r-e/d > 0.05) {
       console.log('worse');
     } else {
       console.log('same');
@@ -705,7 +708,7 @@
     b = d;
     c = e;
   }
-  r = Math.ceil(r / 50 + f * 1.5);
+  r = Math.ceil(r / 25 + f * 1.5);
   console.log(r);
 </script>
 <script id="ch0105/20">
@@ -715,7 +718,7 @@
     r += a + a / 2;
     a /= 2;
   }
-  r = r - a + ' ' + a;
+  r = (r - a).toFixed(4) + ' ' + (a).toFixed(7);
   console.log(r);
 </script>
 <script id="ch0105/21">
@@ -723,8 +726,10 @@
   while(a !== 1) {
     if(a % 2) {
       console.log(a + '*3' + '+1=' + (a*3+1));
+      a = a * 3 + 1;
     } else {
       console.log(a + '/2=' + a / 2);
+      a /= 2;
     }
   }
   console.log('End');
@@ -773,8 +778,10 @@
     d = +prompt();
     if(c>=90 && c<=140 && d>=60 && d<=90) {
       b++;
-    } else if(b > r) {
+    } 
+    if(b > r) {
       r = b;
+      b = 0;
     }
   }
   console.log(r);
@@ -795,13 +802,17 @@
 </script>
 <script id="ch0105/26">
   var a = +prompt();
-  var b;
-  var c = 0;
+  var b, c;
   var r = 0;
   for(var i=0; i<a; i++) {
     b = +prompt();
-    for(var j=0; j<4; j++) {
-      c = b % 10 - c;
+    c = 0;
+    while(b > 0) {
+      if(b > 999) {
+        c += b % 10;
+      } else {
+        c += -b % 10;
+      }
       b = b / 10 | 0;
     }
     if(c > 0) {
@@ -826,7 +837,7 @@
   var a = +prompt();
   var r = '';
   while(a > 0) {
-    r += r&&' ' + a % 10;
+    r += (r&&' ') + a % 10;
     a = a / 10 | 0;
   }
   console.log(r);
@@ -834,12 +845,10 @@
 <script id="ch0105/29">
   var a = +prompt();
   var b;
-  var r = 0.1;
-  if(a < 0) {
-    b = -a;
-  }
+  var r = 0;
+  b = a>0 ? a : -a;
   while(b > 0) {
-    r = b % 10 * 10;
+    r = r * 10 + b % 10;
     b = b / 10 | 0;
   }
   if(a < 0) {
@@ -853,7 +862,7 @@
   var r;
   if(! (a % 19)) {
     while(a > 0) {
-      if(b%10 === 3) {
+      if(a%10 === 3) {
         b--;
       }
       a = a / 10 | 0;
@@ -876,12 +885,12 @@
   for(var i=1; i<=a; i++) {
     c = 1;
     for(var j=1; j<=b; j++) {
-      if(i>j && !i%j) {
+      if(i>=j && !(i%j)) {
         c = -c;
       }
     }
-    if(c<0) {
-      r += r&&',' + i;
+    if(c < 0) {
+      r += (r&&',') + i;
     }
   }
   console.log(r);
@@ -912,7 +921,7 @@
   var a = +prompt();
   var b;
   var r = 0;
-  for(var i=1; i<=n; i++) {
+  for(var i=1; i<=a; i++) {
     b = 1;
     for(var j=1; j<=i; j++) {
       b *= j;
@@ -924,8 +933,8 @@
 <script id="ch0105/35">
   var a = +prompt();
   var b;
-  var r = 0;
-  for(var i=1; i<=n; i++) {
+  var r = 1;
+  for(var i=1; i<=a; i++) {
     b = 1;
     for(var j=1; j<=i; j++) {
       b *= j;
@@ -961,7 +970,11 @@
   var r = '';
   for(var i=a; i>=0; i--) {
     b = +prompt();
-    r += r && ' ' + (i||1) * b;
+    if(!a) {
+      r = 0;
+    } else if(i > 0){
+      r += (r&&' ') + i * b;
+    }
   }
   console.log(r);
 </script>
@@ -970,8 +983,8 @@
   var b, c;
   var d = true;
   var r = 0;
-  for(var i=1; i<=n; i++) {
-    if(! (i % 7)) {
+  for(var i=1; i<=a; i++) {
+    if(!(i%7)) {
       continue;
     }
     b = i;
@@ -984,7 +997,9 @@
       }
     }
     if(d) {
-      r += i;
+      r += i * i;
+    } else {
+      d = true;
     }
   }
   console.log(r);
@@ -1029,7 +1044,7 @@
   var d = +prompt();
   var r;;
   for(var i=1; i<=a; i++) {
-    r = ''；
+    r = '';
     if(!d && i>1 && i<a) {
       r += c;
       for(var j=0; j<b-2; j++) {
