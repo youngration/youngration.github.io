@@ -656,13 +656,18 @@
 <script id="ch0105/16">
   var a = +prompt();
   var b = +prompt();
+  var c = true;
   var r = 200;
   for(var i=1; i<=20; i++) {
     if(r <= a*i) {
       r = i;
+      c = false;
       break;
     }
     r *= 1 + b / 100;
+  }
+  if(c) {
+    r = 'Impossible';
   }
   console.log(r);
 </script>
@@ -1128,4 +1133,327 @@
     }
   }
   console.log(r);
+</script><script id="sort" sample-input="4 1 7" sample-output="1 4 7" comment="输入三个数，把此三个数按升序输出">
+  var a = +prompt();
+  var b = +prompt();
+  var c = +prompt();
+  var r;
+  if(a > b) {
+    r = a;
+    a = b;
+    b = r;
+  }
+  if(a > c) {
+    r = a;
+    a = c;
+    c = r;
+  }
+  if(b > c) {
+    r = c;
+    c = b;
+    b = r;
+  }
+  r = a + ' ' + b + ' ' + c;
+  console.log(r);
+</script>
+
+题目：水仙花数。水仙花数是指一个N位的十进制数，其各位数的N次方的和等于它自己。
+如：153 =　1的三次方+5的三次方+3的三次方，则153就是一个水仙花数
+或：1634 =　1的四次方+6的四次方+3的四次方+4的四次方
+因为1634是一个四位数。
+找出100到100000以内所有的水仙花数。
+<script id="narcissistic " sample-input="153" sample-output="YES" comment="判断一个数是否为水仙花数">
+  var a = +prompt();
+  var b;
+  var c = 0;
+  var r = 0;
+  b = a;
+  while(b > 0) {
+    b = b / 10 | 0;
+    c++;
+  }
+  b = a
+  while(b > 0) {
+    r += (b % 10) ** c;
+    b = b / 10 | 0;
+  }
+  if(r === a) {
+    console.log('YES');
+  } else {
+    console.log('NO');
+  }
+</script>
+<script id="narcissistics" sample-input="" sample-output="" comment="找出100到10000以内所有的水仙花数">
+  var b, c;
+  var r = '';
+  for(var i=100; i<=100000; i++) {
+    b = i;
+    c = 0;
+    d = 0;
+    while(b > 0) {
+      b = b / 10 | 0;
+      c++;
+    }
+    b = i;
+    while(b > 0) {
+      d += (b % 10) ** c;
+      b = b / 10 | 0;
+    }
+    if(d === i) {
+      r += (r&&' ') + i;
+    }
+  }
+  console.log(r);
+</script>
+<script id="palindrom" sample-input="12321" sample-output="YES" comment="判断一个非负整数是否为回文数字">
+  var a = +prompt();
+  var b;
+  var r = 0;
+  b = a;
+  while(b > 0) {
+    r = r * 10 + b % 10;
+    b = b / 10 | 0;
+  }
+  if(r === a) {
+    console.log('YES');
+  } else {
+    console.log('NO');
+  }
+</script>
+
+<script id="weekday" sample-input="2018 6" sample-output="5" comment="输入年份与月份，给出该年该月的第一天是星期几">
+  var a = +prompt();
+  var b = +prompt();
+  var c = false;
+  var r = 1;
+  //1582年实行现行历法&1582年仍是旧历（ios）
+  for (var i = 1583; i <= a; i++) {
+    if (!(i % 400) || !(i % 4) && i % 100) {
+      c = true;
+    }
+    if (i === a) {
+      switch (b - 1) {
+      case 11: r += 30;
+      case 10: r += 31;
+      case 9: r += 30;
+      case 8: r += 31;
+      case 7: r += 31;
+      case 6: r += 30;
+      case 5: r += 31;
+      case 4: r += 30;
+      case 3: r += 31;
+      case 2: r += c ? 29 : 28;
+      case 1: r += 31;
+      }
+    } else if (c) {
+      r += 366;
+    } else {
+      r += 365;
+    }
+    c = false;
+  }
+  r = (r + 5) % 7;
+  console.log(r);
+</script>
+<script id="complete-number" sample-input="6" sample-output="YES" comment="判断一个数是否为完全数">
+  var a = +prompt();
+  var b;
+  var c;
+  var r = 0;
+  for(var i=1; i<=Math.sqrt(a); i++) {
+    c = false;
+    if(i < 4) {
+      if(! (a%i)) {
+        c = true;
+      }
+    } else {
+      b = true;
+      for(var j=2; j<Math.sqrt(i); j++) {
+        if(! (i%j)) {
+          b = false;
+          break;
+        }
+      }
+      if(b) {
+        c = true;
+      }
+    }
+    if(c) {
+      r += i!==a && i;
+      r += a/i!==a && a/i;
+    }
+  }
+  if(r === a) {
+    console.log('YES');
+  } else {
+    console.log('NO');
+  }
+</script>
+<script id="complete-numbers" sample-input="" sample-output="" comment="输出10000以内所有的完全数">
+  var a, b, r;
+  for(var i=1; i<=10000; i++) {
+    r = 0;
+    for(var j=1; j<Math.sqrt(i); j++) {
+      a = false;
+      if(j < 4) {
+        if(! (i%j)) {
+          a = true;
+        }
+      } else {
+        b = true;
+        for(var k=2; k<Math.sqrt(j); k++) {
+          if(! (j%k)) {
+            b = false;
+          }
+        }
+        if(b) {
+          a = true;
+        }
+      }
+      if(a) {
+        r += j!==i && j;
+        r += i/j!===i && i/j;
+      }
+    }
+    if(r === i) {
+      console.log(i);
+    }
+  }
+</script>
+<script id="prime" sample-input="7" sample-output="YES" comment="判断一个数是否为素数">
+  var a = +prompt();
+  var r = true;
+  if(a > 3) {
+    for(var i=2; i<Math.sqrt(a); i++) {
+      if(! (a%i)) {
+        r = false;
+      }
+    }
+  } else if(a < 2) {
+    r = false;
+  }
+  if(r) {
+    console.log(YES);
+  } else {
+    console.log(NO);
+  }
+</script>
+<script id="primes" sample-input="" sample-output="" comment="输出100以内所有的素数">
+  var r;
+  for(var i=1; i<=100; i++) {
+    r = true;
+    if(i > 3) {
+      for(var j=2; j<Math.sqrt(i); j++) {
+        if(! (i%j)) {
+          r = false;
+        }
+      }
+    } else if(i < 2) {
+      r = false;
+    }
+    if(r) {
+      console.log(i);
+    }
+  }
+</script>
+<script id="itob" sample-input="123" sample-output="123" comment="数字转换成字符串，即实现Number函数的功能，不可使用+号或者Number函数">
+  var a = prompt();
+</script>
+<script id="lcf&lcm" sample-input="12 9" sample-output="36 3" comment="给定两个数，求它们的最小公倍数和最大公约数">
+  var a = +prompt();
+  var b = +prompt();
+  var c;
+  var r;
+  if(a > b) {
+    c = a;
+    a = b;
+    b = c;
+  }
+  for(var i=b;; i++) {
+    if(!(i%a) && !(i%b)) {
+      r = i;
+      break;
+    }
+  }
+  while(b % a) {
+    c = b % a;
+    b = a;
+    a = c;
+  }
+  r += ' ' + a;
+  console.log(r);
+</script>
+
+题目：敲7。输出1到100以内所有7的倍数以及数字中包含7的数，如7（7的倍数），37（不是倍数但数位中包含7）都需要输出，依次类推
+<script id="7" sample-input="" sample-output="" comment="敲7，输出7的倍数或数位中含有7的数如（21，27）">
+  var b, c, r;
+  for(var i=7; i<100; i++) {
+    r = true;
+    if(i % 7) {
+      r = false;
+      b = i;
+      while(b > 0) {
+        c = b % 10;
+        b = b / 10 | 0;
+        if(c === 7) {
+          r = true;
+          break;
+        }
+      }
+    }
+    if(r) {
+      console.log(i);
+    }
+  }
+</script>
+<script id="sqrt" sample-input="2" sample-output="1.414" comment="不使用Math.sqrt，求一个非负数的平方根，至少精确到小数点后3位">
+  var a = +prompt();
+  var b = a;
+  var c = 0;
+  var r = c;
+  while(b !== c) {
+    r = (b+c) / 2;
+    if(+(r*r).toFixed(3) === +a.toFixed(3)) {
+      break;
+    } else if(r*r > a) {
+      b = r;
+    } else {
+      c = r;
+    }
+  }
+  console.log(r.toFixed(3))
+</script>
+
+给定M和N，求从M个物体中选出N个的排列与组合的数量：
+Ｃ（ｍ，ｎ）
+Ａ（ｍ，ｎ）
+<script id="c&a">
+  var a = +prompt();
+  var b = +prompt();
+  var aa = 1;
+  var bb = 1;
+  var ab = 1;
+  for(var i=1; i<=a; i++) {
+    aa *= i;
+  }
+  for(var i=1; i<=b; i++) {
+    bb *= i;
+  }
+  for(var i=1; i<=b-a; i++) {
+    ab *= i;
+  }
+  console.log(aa/bb + ' ' + aa/bb/ab);
+</script>
+
+题目：给定一个数，对其进行四舍五入，如1.4输出1，1.6输出2
+<script id="round">
+  var a = +prompt();
+  var r;
+  r = a * 10 % 10;
+  if(r > 5) {
+    r = (a | 0) + 1;
+  } else {
+    r = a | 0;
+  }
+  console.log(r)
 </script>
