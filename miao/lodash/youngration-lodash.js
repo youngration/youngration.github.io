@@ -18,7 +18,6 @@ var youngration = function() {
 
 
 
-/********************************************************/
   return {
     chunk: chunk
   }
