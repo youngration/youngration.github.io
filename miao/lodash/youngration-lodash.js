@@ -1,4 +1,4 @@
-let youngration = function() {
+var youngration = function() {
   function chunk(ary, sz=1) {
     const a = []
     let t = []
