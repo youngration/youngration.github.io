@@ -62,6 +62,7 @@ var youngration = function() {
           map[val] = 1
         }
       })
+      ite = null
     }
     for(let i=0; i<ary2.length; i++) {
       let tpy = null
@@ -96,7 +97,7 @@ var youngration = function() {
     const map = {}
     for(let i=0; i<ary2.length; i++) {
       let tpy = null
-      if(ite === null) {
+      if(cpt === null) {
         tpy = ary2[i]
       } else {
         tpy = cpt(ary2[i])
@@ -122,12 +123,13 @@ var youngration = function() {
     if(n === 0) {
       return ary
     }
-    for(let i=ary.length-1; i>=n; i--) {
+    for(let i=n; i<ary.length; i++) {
       rst.push(ary[i])
     }
     return rst
   }
   function dropRight(ary, n=1) {
+    const rst = []
     if(n === 0) {
       return ary
     }
