@@ -53,70 +53,38 @@ var youngration = function() {
     }
     return rst
   }
-  function differenceBy(ary1, ary2=[], ite=null) {
+  function differenceBy(ary1, ...ary2) {
     const rst = []
     const map = {}
+    const ite = ary2[ary2.length - 1]
+    let fn = null
     if(Array.isArray(ite)) {
-      ite.forEach(val=>{
-        if(map[val] === undefined) {
-          map[val] = 1
+        fn = val => val
+    } else if(typeof ite === 'function') {
+        fn = ite
+        ary2.length--
+    } else {
+        fn = val => val[ite]
+        ary2.length--
+    }
+    ary2.forEach(ary => {
+        ary.forEach(val => {
+            let tpy = fn(val)
+            if(tpy!== undefined && map[tpy]===undefined) {
+              map[tpy] = 1
+            }
+        })
+    })
+    ary1.forEach(val => {
+        let tpy = fn(val)
+        if(map[tpy] === undefined) {
+          rst.push(val)
         }
-      })
-      ite = null
-    }
-    for(let i=0; i<ary2.length; i++) {
-      let tpy = null
-      if(ite === null) {
-        tpy = ary2[i]
-      } else if(typeof ite === 'function') {
-        tpy = ite(ary2[i])
-      } else {
-        tpy = ary2[i][ite]
-      }
-      if(map[tpy] === undefined) {
-        map[tpy] = 1
-      }
-    }
-    for(let i=0; i<ary1.length; i++) {
-      let tpy = null
-      if(ite === null) {
-        tpy = ary1[i]
-      } else if(typeof ite === 'function') {
-        tpy = ite(ary1[i])
-      } else {
-        tpy = ary1[i][ite]
-      }
-      if(map[tpy] === undefined) {
-        rst.push(ary1[i])
-      }
-    }
+    })
     return rst
   }
-  function differenceWith(ary1, ary2=[], cpt=null) {
-    const rst = []
-    const map = {}
-    for(let i=0; i<ary2.length; i++) {
-      let tpy = null
-      if(cpt === null) {
-        tpy = ary2[i]
-      } else {
-        tpy = cpt(ary2[i])
-      }
-      if(map[tpy] === undefined) {
-        map[tpy] = 1
-      }
-    }
-    for(let i=0; i<ary1.length; i++) {
-      let tpy = null
-      if(cpt === null) {
-        tpy = ary1[i]
-      } else {
-        tpy = cpt(ary1[i])
-      }
-      if(map[tpy] === undefined) {
-        rst.push(ary1[i])
-      }
-    }
+  //TO DO
+  function differenceWith(ary1, ...ary2) {
   }
   function drop(ary, n=1) {
     const rst = []
@@ -133,7 +101,7 @@ var youngration = function() {
     if(n === 0) {
       return ary
     }
-    for(let i=0; i<n; i++) {
+    for(let i=0; i<ary.length-n; i++) {
       rst.push(ary[i])
     }
     return rst
