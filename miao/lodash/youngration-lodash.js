@@ -36,12 +36,14 @@ var youngration = function() {
     }
     return rst
   }
-  function difference(ary1, ary2=[]) {
+  function difference(ary1, ...ary2) {
     const rst = []
     const map = {}
     for(let i=0; i<ary2.length; i++) {
-      if(map[ary2[i]] === undefined) {
-        map[ary2[i]] = 1
+      for(let j=0; j<ary2[i].length; j++) {
+        if(map[ary2[i][j]] === undefined) {
+          map[ary2[i][j]] = 1
+        }
       }
     }
     for(let i=0; i<ary1.length; i++) {
@@ -54,8 +56,15 @@ var youngration = function() {
   function differenceBy(ary1, ary2=[], ite=null) {
     const rst = []
     const map = {}
+    if(Array.isArray(ite)) {
+      ite.forEach(val=>{
+        if(map[val] === undefined) {
+          map[val] = 1
+        }
+      })
+    }
     for(let i=0; i<ary2.length; i++) {
-      let tpy
+      let tpy = null
       if(ite === null) {
         tpy = ary2[i]
       } else if(typeof ite === 'function') {
@@ -98,7 +107,7 @@ var youngration = function() {
     }
     for(let i=0; i<ary1.length; i++) {
       let tpy = null
-      if(ite === null) {
+      if(cpt === null) {
         tpy = ary1[i]
       } else {
         tpy = cpt(ary1[i])
@@ -164,11 +173,13 @@ var youngration = function() {
 
 /*********************************************************/
   return {
-    chunk: chunk,
-    compact: compact,
-    concat: concat,
-    difference: difference,
-    differenceBy: differenceBy,
-    differenceWith: differenceWith,
+    chunk,
+    compact,
+    concat,
+    difference,
+    differenceBy,
+    differenceWith,
+    drop,
+    dropRight
   }
 }()
