@@ -85,6 +85,22 @@ var youngration = function() {
   }
   //TO DO
   function differenceWith(ary1, ...ary2) {
+    const rst = []
+    const fn = ary2[ary2.length - 1]
+    ary2.length--
+    ary1.forEach(item => {
+      let flag = true
+      ary2.forEach(elt => {
+        elt.forEach(tpy => {
+          if(fn(item, tpy)) {
+            flag = false
+          }
+        })
+      })
+      if(flag) {
+        rst.push(item)
+      }
+    })
   }
   function drop(ary, n=1) {
     const rst = []
@@ -106,41 +122,27 @@ var youngration = function() {
     }
     return rst
   }
-  function dropRightWhile(ary, pdt=null) {
+  //TO DO
+  function dropRightWhile(ary1, ary2) {
     const rst = []
-    if(ite === null) {
-      return ary
-    } else if(typeof ite === 'function') {
-      ary.forEach(emt => {
-        if(!ite(emt)) {
-          rst.push(emt)
-        }
-      });
-    } else if(Array.isArray(ite)) {
-      ary.forEach(emt => {
-        if(emt[ite[0]] !== ite[1]) {
-          rst.push(emt)
-        }
-      })
-    } else if(typeof ite === 'object') {
-      ary.forEach(emt => {
-        let flag = true
-        for(k in ite) {
-          if(emt[k] === ite[k]) {
-            flag = false
-            break
-          }
-        }
-        if(flag) {
-          rst.push(emt)
-        }
-      })
-    } else {
-
+    const fn = ary2[ary2.length - 1]
+    ary2.length--
+    
+  }
+  function fill(ary, val, start=0, end=ary.length) {
+    const rst = []
+    for(let i=0; i<ary.length; i++) {
+      if(i>=start && i<end) {
+        rst.push(val)
+      } else {
+        rst.push(ary[i])
+      }
     }
   }
-
-
+/*=========================Util==========================*/
+  function identity(val) {
+    return val
+  }
 /*********************************************************/
   return {
     chunk,
@@ -150,6 +152,8 @@ var youngration = function() {
     differenceBy,
     differenceWith,
     drop,
-    dropRight
+    dropRight,
+    fill,
+    findIndex
   }
 }()
