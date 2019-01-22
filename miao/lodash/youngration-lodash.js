@@ -145,15 +145,15 @@ var youngration = function() {
   }
 /*********************************************************/
   return {
-    chunk,
-    compact,
-    concat,
-    difference,
-    differenceBy,
-    differenceWith,
-    drop,
-    dropRight,
-    fill,
-    findIndex
+    chunk: chunk,
+    compact: compact,
+    concat: concat,
+    difference: difference,
+    differenceBy: differenceBy,
+    differenceWith: differenceWith,
+    drop: drop,
+    dropRight: dropRight,
+    fill: fill,
+    findIndex: findIndex
   }
 }()
