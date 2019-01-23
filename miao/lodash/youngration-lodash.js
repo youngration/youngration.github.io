@@ -184,7 +184,7 @@ var youngration = function() {
     type = type.toUpperCase()
     let rst = null
     if(type==='BOOLEAN' || type==='NUMBER' || type==='STRING') {
-      rst = typeof sth
+      rst = (typeof sth).toUpperCase()
     } else if(type==='ARRAY' || type==='FUNCTION' || type==='OBJECT') {
       type = '[OBJECT ' + type + ']'
       rst = Object.prototype.toString.call(sth).toUpperCase()
