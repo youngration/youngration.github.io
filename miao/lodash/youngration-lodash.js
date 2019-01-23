@@ -139,6 +139,9 @@ var youngration = function() {
       }
     }
   }
+  function findIndex(ary) {
+
+  }
 /*=========================Util==========================*/
   function identity(val) {
     return val
