@@ -83,7 +83,6 @@ var youngration = function() {
     })
     return rst
   }
-  //TO DO
   function differenceWith(ary1, ...ary2) {
     const rst = []
     const fn = ary2[ary2.length - 1]
@@ -122,12 +121,46 @@ var youngration = function() {
     }
     return rst
   }
-  //TO DO
-  function dropRightWhile(ary1, ary2) {
+  function dropRightWhile(ary, sth=identity) {
     const rst = []
-    const fn = ary2[ary2.length - 1]
-    ary2.length--
-    
+    let fn = null
+    if(isWhat('function', sth)) {
+      fn = sth
+    } else if(isWhat('String', sth)) {
+      fn = elt => {
+        if(elt[sth]) {
+          return true
+        } else {
+          return false
+        }
+      }
+    } else if(isWhat('array', sth)) {
+      fn = elt => {
+        for(let i=1; i<sth.length; i+=2) {
+          if(sth[i] !== elt[sth[i-1]]) {
+            return false
+          }
+        }
+        return true
+      }
+    } else if(isWhat('Object', sth)) {
+      fn = elt => {
+        for(let k in sth) {
+          if(sth[k] !== elt[k]) {
+            return false
+          }
+        }
+        return true
+      }
+    }
+    for(let i=ary.length-1; i>=0; i--) {
+      if(!fn(ary[i])) {
+        for(let j=0; j<=i; j++) {
+          rst.push(ary[j])
+        }
+      }
+    }
+    return rst
   }
   function fill(ary, val, start=0, end=ary.length) {
     const rst = []
@@ -146,6 +179,25 @@ var youngration = function() {
   function identity(val) {
     return val
   }
+  function isWhat(type, sth) {
+    type = type.toUpperCase()
+    let rst = null
+    if(type==='BOOLEAN' || type==='NUMBER' || type==='STRING') {
+      rst = typeof sth
+    } else if(type==='ARRAY' || type==='FUNCTION' || type==='OBJECT') {
+      type = '[OBJECT ' + type + ']'
+      rst = Object.prototype.toString.call(sth).toUpperCase()
+    }
+    if(rst === null) {
+      //报错？
+    } else {
+      if(rst === type) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
 /*********************************************************/
   return {
     chunk: chunk,
@@ -156,6 +208,7 @@ var youngration = function() {
     differenceWith: differenceWith,
     drop: drop,
     dropRight: dropRight,
+    dropRightWhile: dropRightWhile,
     fill: fill,
     findIndex: findIndex
   }
