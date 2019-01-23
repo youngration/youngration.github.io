@@ -140,7 +140,7 @@ var youngration = function() {
     const fn = sthWhile(sth)
     for(let i=0; i<ary.length; i++) {
       if(!fn(ary[i])) {
-        for(let j=0; j<=i; j++) {
+        for(let j=i; j<=ary.length; j++) {
           rst.push(ary[j])
         }
         break
