@@ -160,7 +160,13 @@ var youngration = function() {
     return rst
   }
   function findIndex(ary, sth=identity, stt=0) {
-
+    const fn = sthWhile(sth)
+    for(let i=stt; i<ary.length; i++) {
+      if(fn(ary[i])) {
+        return i
+      }
+    }
+    return -1
   }
 /*=========================Util==========================*/
   function identity(val) {
