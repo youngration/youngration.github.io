@@ -126,7 +126,7 @@ var youngration = function() {
     let fn = null
     if(isWhat('function', sth)) {
       fn = sth
-    } else if(isWhat('String', sth)) {
+    } else if(isWhat('string', sth)) {
       fn = elt => {
         if(elt[sth]) {
           return true
@@ -158,6 +158,7 @@ var youngration = function() {
         for(let j=0; j<=i; j++) {
           rst.push(ary[j])
         }
+        break
       }
     }
     return rst
