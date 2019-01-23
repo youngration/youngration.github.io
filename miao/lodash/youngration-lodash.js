@@ -124,37 +124,21 @@ var youngration = function() {
   }
   function dropRightWhile(ary, sth=identity) {
     const rst = []
-    let fn = null
-    if(isWhat('function', sth)) {
-      fn = sth
-    } else if(isWhat('string', sth)) {
-      fn = elt => {
-        if(elt[sth]) {
-          return true
-        } else {
-          return false
+    const fn = sthWhile(sth)
+    for(let i=ary.length-1; i>=0; i--) {
+      if(!fn(ary[i])) {
+        for(let j=0; j<=i; j++) {
+          rst.push(ary[j])
         }
-      }
-    } else if(isWhat('array', sth)) {
-      fn = elt => {
-        for(let i=1; i<sth.length; i+=2) {
-          if(sth[i] !== elt[sth[i-1]]) {
-            return false
-          }
-        }
-        return true
-      }
-    } else if(isWhat('Object', sth)) {
-      fn = elt => {
-        for(let k in sth) {
-          if(sth[k] !== elt[k]) {
-            return false
-          }
-        }
-        return true
+        break
       }
     }
-    for(let i=ary.length-1; i>=0; i--) {
+    return rst
+  }
+  function dropWhile(ary, sth=identity) {
+    const rst = []
+    const fn = sthWhile(sth)
+    for(let i=0; i<ary.length; i++) {
       if(!fn(ary[i])) {
         for(let j=0; j<=i; j++) {
           rst.push(ary[j])
@@ -173,6 +157,7 @@ var youngration = function() {
         rst.push(ary[i])
       }
     }
+    return rst
   }
   function findIndex(ary) {
 
@@ -200,18 +185,51 @@ var youngration = function() {
       }
     }
   }
+  function sthWhile (sth) {
+    if(isWhat('function', sth)) {
+      return sth
+    } else if(isWhat('string', sth)) {
+      return elt => {
+        if(elt[sth]) {
+          return true
+        } else {
+          return false
+        }
+      }
+    } else if(isWhat('array', sth)) {
+      return elt => {
+        for(let i=1; i<sth.length; i+=2) {
+          if(sth[i] !== elt[sth[i-1]]) {
+            return false
+          }
+        }
+        return true
+      }
+    } else if(isWhat('Object', sth)) {
+      return elt => {
+        for(let k in sth) {
+          if(sth[k] !== elt[k]) {
+            return false
+          }
+        }
+        return true
+      }
+    }
+    return null
+  }
 /*********************************************************/
   return {
-    chunk: chunk,
-    compact: compact,
-    concat: concat,
-    difference: difference,
-    differenceBy: differenceBy,
-    differenceWith: differenceWith,
-    drop: drop,
-    dropRight: dropRight,
-    dropRightWhile: dropRightWhile,
-    fill: fill,
-    findIndex: findIndex
+    chunk,
+    compact,
+    concat,
+    difference,
+    differenceBy,
+    differenceWith,
+    drop,
+    dropRight,
+    dropRightWhile,
+    dropWhile,
+    fill,
+    findIndex
   }
 }()
