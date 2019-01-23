@@ -100,6 +100,7 @@ var youngration = function() {
         rst.push(item)
       }
     })
+    return rst
   }
   function drop(ary, n=1) {
     const rst = []
