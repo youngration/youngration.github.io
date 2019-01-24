@@ -213,7 +213,7 @@ var youngration = function() {
   function fromPairs(ary) {
     const rst = {}
     for(let elt of ary) {
-      rst[elt[0]] = rst[elt[1]]
+      rst[elt[0]] = elt[1]
     }
     return rst
   }
@@ -237,7 +237,7 @@ var youngration = function() {
   }
   function intersection(...arys) {
     const rst = []
-    const ary0 = ary[0]
+    const ary0 = arys[0]
     for(let elt of ary0) {
       let flag = true
       for(let ary of arys) {
