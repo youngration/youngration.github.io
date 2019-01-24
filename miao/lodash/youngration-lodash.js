@@ -177,6 +177,42 @@ var youngration = function() {
     }
     return -1
   }
+  function head(ary) {
+    return ary[0]
+  }
+  function flatten(ary) {
+    const rst = []
+    for(let elt of ary) {
+      if(isWhat('string', elt)) {
+        for(let e of elt) {
+          rst.push(e)
+        }
+      } else {
+        rst.push(elt)
+      }
+    }
+    return rst
+  }
+  function flattenDeep(ary, rst=[]) {
+    for(let elt of ary) {
+      if(isWhat('string', elt)) {
+        flattenDeep(elt, rst)
+      } else {
+        rst.push(elt)
+      }
+    }
+    return rst
+  }
+  function flattenDepth(ary, dpt=1, rst=[]) {
+    for(let elt of ary) {
+      if(!isWhat('array', elt) || dpt===0) {
+        rst.push(elt)
+      } else {
+        flattenDepth(elt, --dpt, rst)
+      }
+    }
+    return rst
+  }
 /*=========================Util==========================*/
   function identity(val) {
     return val
@@ -246,6 +282,10 @@ var youngration = function() {
     dropWhile,
     fill,
     findIndex,
-    findLastIndex
+    findLastIndex,
+    head,
+    flatten,
+    flattenDeep,
+    flattenDepth
   }
 }()
