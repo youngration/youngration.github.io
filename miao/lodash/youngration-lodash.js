@@ -241,8 +241,9 @@ var youngration = function() {
     for(let elt of ary0) {
       let flag = true
       for(let ary of arys) {
-        if(ary.indexOf(elt) >= 0) {
+        if(ary.indexOf(elt) === -1) {
           flag = false
+          break
         }
       }
       if(flag) {
