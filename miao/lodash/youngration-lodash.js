@@ -177,9 +177,6 @@ var youngration = function() {
     }
     return -1
   }
-  function head(ary) {
-    return ary[0]
-  }
   function flatten(ary) {
     const rst = []
     for(let elt of ary) {
@@ -213,6 +210,99 @@ var youngration = function() {
     }
     return rst
   }
+  function fromPairs(ary) {
+    const rst = {}
+    for(let elt of ary) {
+      rst[elt[0]] = rst[elt[1]]
+    }
+    return rst
+  }
+  function head(ary) {
+    return ary[0]
+  }
+  function indexOf(ary, vl, stt=0) {
+    for(let i=stt; i<ary.length; i++) {
+      if(ary[i] === vl) {
+        return i
+      }
+    }
+    return -1
+  }
+  function initial(ary) {
+    const rst = []
+    for(let i=0; i<ary.length-1; i++) {
+      rst.push(ary[i])
+    }
+    return rst
+  }
+  function intersection(...arys) {
+    const rst = []
+    const ary0 = ary[0]
+    for(let elt of ary0) {
+      let flag = true
+      for(let ary of arys) {
+        if(ary.indexOf(elt) >= 0) {
+          flag = false
+        }
+      }
+      if(flag) {
+        rst.push(elt)
+      }
+    }
+    return rst
+  }
+  function intersectionBy(...sths) {
+    const rst = []
+    const ary0 = sths[0]
+    const fn = sthBy(sths[sths.length - 1])
+    for(elt of ary0) {
+      let flag1 = true
+      for(let i=1; i<sths.length; i++) {
+        if(isWhat('array', sths[i])) {
+          let flag2 = true
+          for(let item of sths[i]) {
+            if(fn(elt) === fn(item)) {
+              flag2 = false
+              break
+            }
+          }
+          if(flag2) {
+            flag1 = false
+            break
+          }
+        }
+      }
+      if(flag1) {
+        rst.push(elt)
+      }
+    }
+    return rst
+  }
+  function intersectionWith(...sths) {
+    const rst = []
+    const ary0 = sths[0]
+    const fn = sths[sths.length - 1]
+    for(let elt of ary0) {
+      let flag1 = true
+      for(let i=1; i<sths.length-1; i++) {
+        let flag2 = true
+        for(let item of sths[i]) {
+          if(fn(elt, item)) {
+            flag2 = false
+            break
+          }
+        }
+        if(flag2) {
+          flag1 = false
+          break
+        }
+      }
+      if(flag1) {
+        rst.push(elt)
+      }
+    }
+    return rst
+  }
 /*=========================Util==========================*/
   function identity(val) {
     return val
@@ -236,11 +326,21 @@ var youngration = function() {
       }
     }
   }
-  function sthWhile (sth) {
+  function sthBy(sth) {
+    let fn = identity
     if(isWhat('function', sth)) {
-      return sth
+      fn = sth
     } else if(isWhat('string', sth)) {
-      return elt => {
+      fn = ojt => ojt[sth]
+    }
+    return fn
+  }
+  function sthWhile (sth) {
+    let fn = identity
+    if(isWhat('function', sth)) {
+      fn = sth
+    } else if(isWhat('string', sth)) {
+      fn = elt => {
         if(elt[sth]) {
           return true
         } else {
@@ -248,7 +348,7 @@ var youngration = function() {
         }
       }
     } else if(isWhat('array', sth)) {
-      return elt => {
+      fn = elt => {
         for(let i=1; i<sth.length; i+=2) {
           if(sth[i] !== elt[sth[i-1]]) {
             return false
@@ -257,7 +357,7 @@ var youngration = function() {
         return true
       }
     } else if(isWhat('Object', sth)) {
-      return elt => {
+      fn = elt => {
         for(let k in sth) {
           if(sth[k] !== elt[k]) {
             return false
@@ -266,7 +366,7 @@ var youngration = function() {
         return true
       }
     }
-    return null
+    return fn
   }
 /*********************************************************/
   return {
@@ -283,9 +383,15 @@ var youngration = function() {
     fill,
     findIndex,
     findLastIndex,
-    head,
     flatten,
     flattenDeep,
-    flattenDepth
+    flattenDepth,
+    fromPairs,
+    head,
+    indexOf,
+    initial,
+    intersection,
+    intersectionBy,
+    intersectionWith,
   }
 }()
