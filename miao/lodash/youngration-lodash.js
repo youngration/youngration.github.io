@@ -245,6 +245,7 @@ var youngration = function() {
     dropRightWhile,
     dropWhile,
     fill,
-    findIndex
+    findIndex,
+    findLastIndex
   }
 }()
