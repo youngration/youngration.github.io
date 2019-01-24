@@ -183,7 +183,7 @@ var youngration = function() {
   function flatten(ary) {
     const rst = []
     for(let elt of ary) {
-      if(isWhat('string', elt)) {
+      if(isWhat('array', elt)) {
         for(let e of elt) {
           rst.push(e)
         }
@@ -195,7 +195,7 @@ var youngration = function() {
   }
   function flattenDeep(ary, rst=[]) {
     for(let elt of ary) {
-      if(isWhat('string', elt)) {
+      if(isWhat('array', elt)) {
         flattenDeep(elt, rst)
       } else {
         rst.push(elt)
