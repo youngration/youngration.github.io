@@ -257,7 +257,7 @@ var youngration = function() {
     }
     for(let item of ary) {
       map.forEach((v, k) => {
-        if(item===k && v===arys.length) {
+        if(item===k && v===arys.length-1) {
           rst.push(item)
         }
       })
@@ -287,7 +287,7 @@ var youngration = function() {
     }
     for(let item of ary) {
       map.forEach((v, k) => {
-        if(fn(item)===v && k===L) {
+        if(fn(item)===v && k===L-1) {
           rst.push(item)
         }
       })
@@ -414,7 +414,7 @@ var youngration = function() {
     if(isWhat('function', sth)) {
       fn = sth
     } else if(isWhat('object', sth)) {
-      fn = matches
+      fn = matches(sth)
     } else if(isWhat('array', sth)) {
       fn = matchesProperty(...sth)
     } else if(isWhat('string', sth)) {
@@ -423,48 +423,6 @@ var youngration = function() {
     return fn
   }
 /*=========================Self==========================*/
-  function sthBy(sth) {
-    let fn = identity
-    if(isWhat('function', sth)) {
-      fn = sth
-    } else if(isWhat('string', sth)) {
-      fn = ojt => ojt[sth]
-    }
-    return fn
-  }
-  function sthWhile (sth) {
-    let fn = identity
-    if(isWhat('function', sth)) {
-      fn = sth
-    } else if(isWhat('string', sth)) {
-      fn = elt => {
-        if(elt[sth]) {
-          return true
-        } else {
-          return false
-        }
-      }
-    } else if(isWhat('array', sth)) {
-      fn = elt => {
-        for(let i=1; i<sth.length; i+=2) {
-          if(sth[i] !== elt[sth[i-1]]) {
-            return false
-          }
-        }
-        return true
-      }
-    } else if(isWhat('Object', sth)) {
-      fn = elt => {
-        for(let k in sth) {
-          if(sth[k] !== elt[k]) {
-            return false
-          }
-        }
-        return true
-      }
-    }
-    return fn
-  }
 /*********************************************************/
   return {
     chunk,
@@ -490,5 +448,9 @@ var youngration = function() {
     intersection,
     intersectionBy,
     intersectionWith,
+    identity,
+    matches,
+    matchesProperty,
+    property,
   }
 }()
