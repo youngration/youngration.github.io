@@ -251,7 +251,7 @@ var youngration = function() {
         if(map.has(item)) {
           map.set(item, map.get(item)+1)
         } else {
-          map.get(item, 1)
+          map.set(item, 1)
         }
       }
     }
