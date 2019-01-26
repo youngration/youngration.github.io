@@ -53,53 +53,61 @@ var youngration = function() {
     }
     return rst
   }
-  function differenceBy(ary1, ...ary2) {
+  function differenceBy(ary, ...sths) {
     const rst = []
-    const map = {}
-    const ite = ary2[ary2.length - 1]
+    const set = new Set
     let fn = null
-    if(Array.isArray(ite)) {
-        fn = val => val
-    } else if(typeof ite === 'function') {
-        fn = ite
-        ary2.length--
+    let L = sths.length
+    if(isWhat('array', sths[L - 1])) {
+      fn = doBy()
     } else {
-        fn = val => val[ite]
-        ary2.length--
+      L--
+      fn = doBy(sths[L])
     }
-    ary2.forEach(ary => {
-        ary.forEach(val => {
-            let tpy = fn(val)
-            if(tpy!== undefined && map[tpy]===undefined) {
-              map[tpy] = 1
-            }
-        })
-    })
-    ary1.forEach(val => {
-        let tpy = fn(val)
-        if(map[tpy] === undefined) {
-          rst.push(val)
+    for(let i=0; i<L; i++) {
+      if(isWhat('array', sths[i])) {
+        for(let item of sths[i]) {
+          set.add(fn(item))
         }
-    })
-    return rst
-  }
-  function differenceWith(ary1, ...ary2) {
-    const rst = []
-    const fn = ary2[ary2.length - 1]
-    ary2.length--
-    ary1.forEach(item => {
-      let flag = true
-      ary2.forEach(elt => {
-        elt.forEach(tpy => {
-          if(fn(item, tpy)) {
-            flag = false
-          }
-        })
-      })
-      if(flag) {
+      }
+    }
+    for(let item of ary) {
+      if(!set.has(fn(item))) {
         rst.push(item)
       }
-    })
+    }
+    return rst
+  }
+  function differenceWith(ary, ...sths) {
+    const rst = []
+    const set = new Set
+    let fn = null
+    let L = sths.length
+    if(isWhat('array', sths[L - 1])) {
+      fn = doBy()
+    } else {
+      L--
+      fn = doBy(sths[L])
+    }
+    for(let i=0; i<L; i++) {
+      if(isWhat('array', sths[i])) {
+        for(let item of sths[i]) {
+          set.add(item)
+        }
+      }
+    }
+    for(let item1 of ary) {
+      let flag = true
+      for(let item2 of set) {
+        if(fn(item1, item2)) {
+          flag = false
+          break
+        }
+      }
+      if(flag) {
+        rst.push(item1)
+      }
+    }
     return rst
   }
   function drop(ary, n=1) {
@@ -122,9 +130,9 @@ var youngration = function() {
     }
     return rst
   }
-  function dropRightWhile(ary, sth=identity) {
+  function dropRightWhile(ary, sth) {
     const rst = []
-    const fn = sthWhile(sth)
+    const fn = doWhile(sth)
     for(let i=ary.length-1; i>=0; i--) {
       if(!fn(ary[i])) {
         for(let j=0; j<=i; j++) {
@@ -135,7 +143,7 @@ var youngration = function() {
     }
     return rst
   }
-  function dropWhile(ary, sth=identity) {
+  function dropWhile(ary, sth) {
     const rst = []
     const fn = sthWhile(sth)
     for(let i=0; i<ary.length; i++) {
@@ -159,18 +167,18 @@ var youngration = function() {
     }
     return rst
   }
-  function findIndex(ary, sth=identity, stt=0) {
-    const fn = sthWhile(sth)
-    for(let i=stt; i<ary.length; i++) {
+  function findIndex(ary, sth, start=0) {
+    const fn = doWhile(sth)
+    for(let i=start; i<ary.length; i++) {
       if(fn(ary[i])) {
         return i
       }
     }
     return -1
   }
-  function findLastIndex(ary, sth=identity, stt=ary.length-1) {
-    const fn = sthWhile(sth)
-    for(let i=stt; i>=0; i--) {
+  function findLastIndex(ary, sth, end=ary.length-1) {
+    const fn = doWhile(sth)
+    for(let i=end; i>=0; i--) {
       if(fn(ary[i])) {
         return i
       }
@@ -235,60 +243,73 @@ var youngration = function() {
     }
     return rst
   }
-  function intersection(...arys) {
+  function intersection(ary, ...arys) {
     const rst = []
-    const ary0 = arys[0]
-    for(let elt of ary0) {
-      let flag = true
-      for(let ary of arys) {
-        if(ary.indexOf(elt) === -1) {
-          flag = false
-          break
+    const map = new Map
+    for(let ary of arys) {
+      for(let item of ary) {
+        if(map.has(item)) {
+          map.set(item, map.get(item)+1)
+        } else {
+          map.get(item, 1)
         }
       }
-      if(flag) {
-        rst.push(elt)
-      }
+    }
+    for(let item of ary) {
+      map.forEach((v, k) => {
+        if(item===k && v===arys.length) {
+          rst.push(item)
+        }
+      })
     }
     return rst
   }
-  function intersectionBy(...sths) {
+  function intersectionBy(ary, ...sths) {
     const rst = []
-    const ary0 = sths[0]
-    const fn = sthBy(sths[sths.length - 1])
-    for(elt of ary0) {
-      let flag1 = true
-      for(let i=1; i<sths.length; i++) {
-        if(isWhat('array', sths[i])) {
-          let flag2 = true
-          for(let item of sths[i]) {
-            if(fn(elt) === fn(item)) {
-              flag2 = false
-              break
-            }
-          }
-          if(flag2) {
-            flag1 = false
-            break
-          }
+    const map = new Map
+    let fn = null
+    let L = sths.length
+    if(isWhat('array', sths[L - 1])) {
+      fn = doBy()
+    } else {
+      L--
+      fn = doBy(sths[L])
+    }
+    for(let i=0; i<L; i++) {
+      for(let item of sths[i]) {
+        let tpy = fn(item)
+        if(map.has(tpy)) {
+          map.set(tpy, map.get(tpy)+1)
+        } else {
+          map.set(tpy, 1)
         }
       }
-      if(flag1) {
-        rst.push(elt)
-      }
+    }
+    for(let item of ary) {
+      map.forEach((v, k) => {
+        if(fn(item)===v && k===L) {
+          rst.push(item)
+        }
+      })
     }
     return rst
   }
-  function intersectionWith(...sths) {
+  function intersectionWith(ary, ...sths) {
     const rst = []
-    const ary0 = sths[0]
-    const fn = sths[sths.length - 1]
-    for(let elt of ary0) {
+    let fn = null
+    let L = sths.length
+    if(isWhat('array', sths[L - 1])) {
+      fn = doWith()
+    } else {
+      L--
+      fn = doWith(sths[L])
+    }
+    for(let item1 of ary) {
       let flag1 = true
-      for(let i=1; i<sths.length-1; i++) {
+      for(let i=0; i<L; i++) {
         let flag2 = true
-        for(let item of sths[i]) {
-          if(fn(elt, item)) {
+        for(let item2 of sths[i]) {
+          if(fn(item1, item2)) {
             flag2 = false
             break
           }
@@ -299,34 +320,109 @@ var youngration = function() {
         }
       }
       if(flag1) {
-        rst.push(elt)
+        rst.push(item1)
       }
     }
     return rst
   }
+/*=========================Lang==========================*/
+  function isMatch(ojt, src) {
+    if(getWhat(ojt) !== getWhat(src)) {
+      return false
+    }
+    for(let k of Object.keys(src)) {
+      if(isWhat('ojt', src[k]) && !isMatch(ojt, src)) {
+        return false
+      } else if(ojt[k] !== src[k]) {
+        return false
+      }
+    }
+    return true
+  }
+/*=========================Lang==========================*/
 /*=========================Util==========================*/
   function identity(val) {
     return val
   }
-  function isWhat(type, sth) {
-    type = type.toUpperCase()
-    let rst = null
-    if(type==='BOOLEAN' || type==='NUMBER' || type==='STRING') {
-      rst = (typeof sth).toUpperCase()
-    } else if(type==='ARRAY' || type==='FUNCTION' || type==='OBJECT') {
-      type = '[OBJECT ' + type + ']'
-      rst = Object.prototype.toString.call(sth).toUpperCase()
-    }
-    if(rst === null) {
-      //报错？
-    } else {
-      if(rst === type) {
-        return true
-      } else {
-        return false
+  function matches(src) {
+    return sth => isMatch(sth, src)
+  }
+  function matchesProperty(pt, vl) {
+    return sth => property(pt)(sth) === vl
+  }
+  function property(path) {
+    const rex = /\w+?(?=$|[\.\[\]])/g
+    ps = String(path).match(rex)
+    return sth => {
+      let rst = sth
+      for(let p of ps) {
+        if(isWhat('pmt', sth)) {
+          return undefined
+        }
+        rst = rst[p]
       }
+      return rst
     }
   }
+/*=========================Util==========================*/
+/*=========================Self==========================*/
+  function comparator() {
+    return false
+  }
+  function getWhat(sth) {
+    let typed = null
+    const tpo = typeof sth
+    if(tpo==='function' || tpo==='object') {
+      const tpy = Object.prototype.toString.call(sth)
+      const tstr = tpy.slice(8, tpy.length-1).toLowerCase()
+      if(tstr === 'null') {
+        typed = 'pmt-' + tstr
+      } else {
+        typed = 'ojt-' + tstr
+      }
+    } else {
+      typed = 'pmt-' + tpo
+    }
+    return typed
+  }
+  function isWhat(type, sth) {
+    const typed = getWhat(sth).split('-')
+    type = type.toLowerCase()
+    if(type===typed[0] || type===typed[1]) {
+      return true
+    }
+    return false
+  }
+  function doWith(sth) {
+    let fn = comparator
+    if(isWhat('function', sth)) {
+      fn = sth
+    }
+    return fn
+  }
+  function doBy(sth) {
+    let fn = identity
+    if(isWhat('function', sth)) {
+      fn = sth
+    } else if(isWhat('string', sth)) {
+      fn = property(sth)
+    }
+    return fn
+  }
+  function doWhile(sth) {
+    let fn = identity
+    if(isWhat('function', sth)) {
+      fn = sth
+    } else if(isWhat('object', sth)) {
+      fn = matches
+    } else if(isWhat('array', sth)) {
+      fn = matchesProperty(...sth)
+    } else if(isWhat('string', sth)) {
+      fn = property(sth)
+    }
+    return fn
+  }
+/*=========================Self==========================*/
   function sthBy(sth) {
     let fn = identity
     if(isWhat('function', sth)) {
