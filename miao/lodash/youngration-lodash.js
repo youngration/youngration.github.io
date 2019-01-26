@@ -287,7 +287,7 @@ var youngration = function() {
     }
     for(let item of ary) {
       map.forEach((v, k) => {
-        if(fn(item)===v && k===L) {
+        if(fn(item)===k && v===L) {
           rst.push(item)
         }
       })
