@@ -145,7 +145,7 @@ var youngration = function() {
   }
   function dropWhile(ary, sth) {
     const rst = []
-    const fn = sthWhile(sth)
+    const fn = doWhile(sth)
     for(let i=0; i<ary.length; i++) {
       if(!fn(ary[i])) {
         for(let j=i; j<ary.length; j++) {
@@ -257,7 +257,7 @@ var youngration = function() {
     }
     for(let item of ary) {
       map.forEach((v, k) => {
-        if(item===k && v===arys.length-1) {
+        if(item===k && v===arys.length) {
           rst.push(item)
         }
       })
@@ -287,7 +287,7 @@ var youngration = function() {
     }
     for(let item of ary) {
       map.forEach((v, k) => {
-        if(fn(item)===v && k===L-1) {
+        if(fn(item)===v && k===L) {
           rst.push(item)
         }
       })
