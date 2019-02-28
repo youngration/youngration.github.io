@@ -328,7 +328,7 @@ var youngration = function() {
   function join(ary, sprt=',') {
     let rst = '';
     for(let item of ary) {
-      rst += (rst&&sprt) + item;
+      rst += (rst&&String(sprt)) + item;
     }
     return rst;
   }
@@ -367,21 +367,18 @@ var youngration = function() {
     const set = new Set;
     const fn = doBy(sth);
     for(let item of vls) {
-      let tpy = fn(item);
-      if(!set.has(tpy)) {
-        set.add(tpy);
-      }
+      set.add(fn(item));
     }
     for(let item of ary) {
       let tpy = fn(item);
-      if(!set.has(item)) {
+      if(!set.has(tpy)) {
         rst.push(item);
       }
     }
     return rst;
   }
   function pullAllWith(ary, vls, sth) {
-    const ary = [];
+    const rst = [];
     const fn = doWith(sth);
     for(let item of ary) {
       let flag = true;
