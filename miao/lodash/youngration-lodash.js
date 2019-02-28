@@ -325,6 +325,78 @@ var youngration = function() {
     }
     return rst
   }
+  function join(ary, sprt=',') {
+    let rst = '';
+    for(let item of ary) {
+      rst += (rst&&sprt) + item;
+    }
+    return rst;
+  }
+  function last(ary) {
+    return ary[ary.length - 1];
+  }
+  function lastIndexOf(ary, vl, start=ary.length-1) {
+    for(let i=start; i>=0; i--) {
+      if(ary[i] === vl) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  function nth(ary, n=0) {
+    if(n < 0) {
+      n = n + ary.length;
+    }
+    return ary[n];
+  }
+  function pull(ary, ...vls) {
+    const rst = [];
+    const set = new Set(vls);
+    for(let item of ary) {
+      if(!set.has(item)) {
+        rst.push(item);
+      }
+    }
+    return rst;
+  }
+  function pullAll(ary, vls) {
+    return pull(ary, ...vls);
+  }
+  function pullAllBy(ary, vls, sth=identity) {
+    const rst = [];
+    const set = new Set;
+    const fn = doBy(sth);
+    for(let item of vls) {
+      let tpy = fn(item);
+      if(!set.has(tpy)) {
+        set.add(tpy);
+      }
+    }
+    for(let item of ary) {
+      let tpy = fn(item);
+      if(!set.has(item)) {
+        rst.push(item);
+      }
+    }
+    return rst;
+  }
+  function pullAllWith(ary, vls, sth) {
+    const ary = [];
+    const fn = doWith(sth);
+    for(let item of ary) {
+      let flag = true;
+      for(let vl of vls) {
+        if(fn(item, vl)) {
+          flag = false;
+          break;
+        }
+      }
+      if(flag) {
+        rst.push(item);
+      }
+    }
+    return rst;
+  }
 /*=========================Lang==========================*/
   function isMatch(ojt, src) {
     if(getWhat(ojt) !== getWhat(src)) {
@@ -356,7 +428,7 @@ var youngration = function() {
     return sth => {
       let rst = sth
       for(let p of ps) {
-        if(isWhat('pmt', sth)) {
+        if(isWhat('pmt', rst)) {
           return undefined
         }
         rst = rst[p]
@@ -452,5 +524,13 @@ var youngration = function() {
     matches,
     matchesProperty,
     property,
+    join,
+    last,
+    lastIndexOf,
+    nth,
+    pull,
+    pullAll,
+    pullAllBy,
+    pullAllWith
   }
 }()
