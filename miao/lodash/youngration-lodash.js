@@ -394,6 +394,41 @@ var youngration = function() {
     }
     return rst;
   }
+  function pullAt(ary, idxs) {
+    const rst = [];
+    const set = new Set(idxs);
+    for(let i=0, j=0; i<ary.length; i++, j++) {
+      if(set.has(j)) {
+        rst.push(...ary.splice(i--, 1));
+      }
+    }
+    return rst;
+  }
+  function remove(ary, fn=identity) {
+    const rst = [];
+    for(let i=0, j=0; i<ary.length; i++, j++) {
+      if(fn(ary[i], i, ary)) {
+        rst.push(...ary.splice(i--, 1));
+      }
+    }
+    return rst;
+  }
+  function reverse(ary) {
+    let i = 0;
+    let j = ary.length - 1;
+    while(i < j) {
+      let tpy = ary[i];
+      ary[i++] = ary[j];
+      ary[j--] = tpy;
+    }
+  }
+  function slice(ary, start=0, end=ary.length-1) {
+    const rst = [];
+    for(let i=start; i<end; i++) {
+      rst.push(ary[i]);
+    }
+    return rst;
+  }
 /*=========================Lang==========================*/
   function isMatch(ojt, src) {
     if(getWhat(ojt) !== getWhat(src)) {
@@ -528,6 +563,10 @@ var youngration = function() {
     pull,
     pullAll,
     pullAllBy,
-    pullAllWith
+    pullAllWith,
+    pullAt,
+    remove,
+    reverse,
+    slice
   }
 }()
