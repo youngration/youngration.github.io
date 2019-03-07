@@ -421,6 +421,7 @@ var youngration = function() {
       ary[i++] = ary[j];
       ary[j--] = tpy;
     }
+    return ary;
   }
   function slice(ary, start=0, end=ary.length-1) {
     const rst = [];
@@ -428,6 +429,19 @@ var youngration = function() {
       rst.push(ary[i]);
     }
     return rst;
+  }
+  function sortedIndex(ary, vl) {
+    let lft = 0;
+    let rit = ary.length;
+    while(lft < rit) {
+      let mid = lft + rit >> 1;
+      if(ary[mid] < vl) {
+        lft = mid + 1;
+      } else {
+        rit = mid;
+      }
+    }
+    return lft;
   }
 /*=========================Lang==========================*/
   function isMatch(ojt, src) {
