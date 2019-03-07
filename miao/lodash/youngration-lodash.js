@@ -581,6 +581,7 @@ var youngration = function() {
     pullAt,
     remove,
     reverse,
-    slice
+    slice,
+    sortedIndex
   }
 }()
