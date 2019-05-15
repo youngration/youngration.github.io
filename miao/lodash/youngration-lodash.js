@@ -443,7 +443,7 @@ var youngration = function() {
     }
     return lft;
   }
-  function sortedIndexBy(ary, vl, fn = identity) {
+  function sortedIndexBy(ary, vl, fn = property) {
     let tpy = fn(vl)
     for(let i = 0; i < ary.length; i++) {
       if(tpy > fn(ary[i])) {
