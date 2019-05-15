@@ -443,6 +443,15 @@ var youngration = function() {
     }
     return lft;
   }
+  function sortedIndexBy(ary, vl, fn = identity) {
+    let tpy = fn(vl)
+    for(let i = 0; i < ary.length; i++) {
+      if(tpy > fn(ary[i])) {
+        return i
+      }
+    }
+    return ary.length
+  }
 /*=========================Lang==========================*/
   function isMatch(ojt, src) {
     if(getWhat(ojt) !== getWhat(src)) {
@@ -582,6 +591,7 @@ var youngration = function() {
     remove,
     reverse,
     slice,
-    sortedIndex
+    sortedIndex,
+    sortedIndexBy
   }
 }()
